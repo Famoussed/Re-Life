@@ -7,9 +7,9 @@ Bu klasör ekip genelinde paylaşılır (git'e dahildir).
 | Yol | Amaç |
 |---|---|
 | `settings.json` | Bash izin allowlist'i (php artisan, composer, npm, pint, pest) |
-| `agents/laravel-backend.md` | Migration/model/policy/event üreten subagent |
-| `agents/filament-resource.md` | Filament panel kaynağı üreten subagent |
-| `agents/livewire-ui.md` | Public Livewire bileşeni + Blade üreten subagent |
+| `agents/laravel-backend.md` | Migration/model/policy/event üreten subagent (veri katmanı) |
+| `agents/service-layer.md` | Service/Action/iş mantığı üreten subagent |
+| `agents/livewire-ui.md` | Public + panel Livewire bileşeni + Blade üreten subagent |
 | `commands/sprint.md` | `/sprint <no>` — sprint görevlerini başlatır |
 | `commands/yeni-model.md` | `/yeni-model <Ad>` — model iskeleti üretir |
 

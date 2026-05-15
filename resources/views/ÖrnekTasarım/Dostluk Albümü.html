@@ -1,0 +1,761 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8" />
+<title>Re·Life — Dostluk Albümü</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@400;500;600;700&family=Caveat:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          cream:  { 50:'#FBF6EA', 100:'#F6EFDE', 200:'#EFE5CB', 300:'#E5D6B0', 400:'#D9C492', 500:'#C7AC74' },
+          sage:   { 50:'#F1F3EC', 100:'#E2E7D7', 200:'#C8D2B5', 300:'#A8B891', 400:'#8BA174', 500:'#6F875C', 600:'#586B48', 700:'#465638' },
+          clay:   { 50:'#FAF1E8', 100:'#F1DEC9', 200:'#E5C39E', 300:'#D29F70', 400:'#B97D4D', 500:'#9A6238', 600:'#7B4D2C' },
+          sun:    { 50:'#FEF7E1', 100:'#FBEBB0', 200:'#F7D87A', 300:'#F2C246', 400:'#E8A92B', 500:'#C58A1B' },
+          peach:  { 100:'#FCE4D2', 200:'#F8C8A8', 300:'#F2A878', 400:'#E88753' },
+          ink:    { 700:'#3B342B', 800:'#2A2520', 900:'#1F1B17' },
+        },
+        fontFamily: {
+          serif: ['Newsreader','Georgia','serif'],
+          sans: ['"DM Sans"','ui-sans-serif','system-ui','sans-serif'],
+          hand: ['Caveat','cursive'],
+        },
+        borderRadius: { '4xl':'2rem', '5xl':'2.5rem' },
+        boxShadow: {
+          'card':  '0 1px 2px rgba(60,42,20,.05), 0 8px 24px -8px rgba(60,42,20,.18), 0 28px 60px -30px rgba(60,42,20,.25)',
+          'lift':  '0 4px 10px rgba(60,42,20,.07), 0 24px 50px -16px rgba(60,42,20,.28), 0 60px 100px -50px rgba(60,42,20,.35)',
+          'note':  '0 1px 1px rgba(60,42,20,.05), 0 6px 12px -4px rgba(60,42,20,.15)',
+        },
+      },
+    },
+  };
+</script>
+
+<style>
+  :root { color-scheme: light; }
+  html, body { margin:0; padding:0; background:#FBF6EA; font-family:'DM Sans', sans-serif; color:#2A2520; }
+
+  /* paper grain — subtle warm noise overlay */
+  .paper {
+    background-color: #FBF6EA;
+    background-image:
+      radial-gradient(ellipse 800px 400px at 10% 5%, rgba(242,194,70,0.10), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 95% 30%, rgba(232,135,83,0.07), transparent 65%),
+      radial-gradient(ellipse 900px 600px at 50% 110%, rgba(168,184,145,0.18), transparent 60%),
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.42  0 0 0 0 0.30  0 0 0 0 0.12  0 0 0 0.10 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+  .paper-card {
+    background:
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.42  0 0 0 0 0.30  0 0 0 0 0.12  0 0 0 0.06 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"),
+      linear-gradient(180deg, #FCF7EB 0%, #F8F0DE 100%);
+  }
+  .paper-note {
+    background:
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.5' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.42  0 0 0 0 0.30  0 0 0 0 0.12  0 0 0 0.08 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"),
+      linear-gradient(180deg, #FEF7E1 0%, #FBEBB0 100%);
+  }
+
+  /* photo placeholder — warm striped, with optional emoji-faced creature */
+  .photo {
+    background-color: #C8D2B5;
+    background-image:
+      radial-gradient(ellipse at 50% 35%, rgba(255,255,255,0.35), transparent 60%),
+      repeating-linear-gradient(135deg, rgba(60,42,20,0.06) 0 1px, transparent 1px 9px);
+    display:flex; align-items:center; justify-content:center;
+    position:relative; overflow:hidden;
+  }
+  .photo .placeholder-mono {
+    font-family:'DM Sans', monospace; font-size:10px; letter-spacing:.12em; text-transform:uppercase;
+    color:rgba(60,42,20,.55); background:rgba(251,246,234,0.8); padding:5px 9px; border-radius:999px;
+  }
+  .photo.sage   { background-color:#C8D2B5; }
+  .photo.clay   { background-color:#E5C39E; }
+  .photo.sun    { background-color:#FBEBB0; }
+  .photo.peach  { background-color:#F8C8A8; }
+  .photo.cream  { background-color:#EFE5CB; }
+
+  /* leaf-shaped progress fill — uses clip-path */
+  .leaf { clip-path: path('M0,8 C0,3 3,0 8,0 L92,0 C97,0 100,3 100,8 L100,16 C100,21 97,24 92,24 L8,24 C3,24 0,21 0,16 Z'); }
+
+  /* hover lift — soul cards */
+  .soul-card { transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s; }
+  .soul-card:hover {
+    transform: translateY(-6px) rotate(-0.3deg);
+    box-shadow: 0 4px 10px rgba(60,42,20,.07), 0 30px 60px -16px rgba(60,42,20,.32), 0 70px 110px -50px rgba(60,42,20,.4);
+  }
+  .soul-card .reveal {
+    max-height: 0; opacity: 0; overflow: hidden;
+    transition: max-height .55s cubic-bezier(.2,.7,.2,1), opacity .35s, margin .35s;
+  }
+  .soul-card:hover .reveal { max-height: 360px; opacity: 1; }
+  .soul-card .play-bloom { transform: scale(.85); transition: transform .4s cubic-bezier(.2,.7,.2,1); }
+  .soul-card:hover .play-bloom { transform: scale(1); }
+
+  /* gentle stamp tilt rotations for the cards in the gallery */
+  .tilt-1 { transform: rotate(-0.6deg); }
+  .tilt-2 { transform: rotate(0.4deg); }
+  .tilt-3 { transform: rotate(-0.2deg); }
+
+  /* breathing dot */
+  @keyframes pulse-soft { 0%,100% { opacity: .85; } 50% { opacity: .35; } }
+  .pulse-soft { animation: pulse-soft 2.4s ease-in-out infinite; }
+
+  /* underline doodle */
+  .doodle {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 14'><path d='M2 9 C 40 2, 80 14, 120 6 S 200 4, 218 8' fill='none' stroke='%23E8A92B' stroke-width='3' stroke-linecap='round'/></svg>");
+    background-repeat: no-repeat; background-position: 0 100%; background-size: 100% 12px;
+    padding-bottom: 6px;
+  }
+
+  /* sticky note rotations */
+  .note-tilt-1 { transform: rotate(-1.6deg); }
+  .note-tilt-2 { transform: rotate(2deg); }
+
+  /* soft fade for hero photo */
+  .photo-vignette::after {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 60%, transparent 50%, rgba(60,42,20,0.2));
+    pointer-events: none;
+  }
+
+  /* paw + leaf progress glyph sizing */
+  .glyph { width: 28px; height: 28px; }
+</style>
+</head>
+<body class="paper" style="background-color: rgb(255, 245, 228); font-family: Inter">
+
+<!-- ============================================================
+     Re-usable SVG defs (paw, leaf, heart, sun, stamps)
+     ============================================================ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="paw" viewBox="0 0 32 32">
+      <ellipse cx="16" cy="22" rx="9" ry="7" />
+      <ellipse cx="7" cy="12" rx="3" ry="4" />
+      <ellipse cx="13" cy="7" rx="2.6" ry="3.8" />
+      <ellipse cx="19" cy="7" rx="2.6" ry="3.8" />
+      <ellipse cx="25" cy="12" rx="3" ry="4" />
+    </symbol>
+    <symbol id="leaf" viewBox="0 0 32 32">
+      <path d="M4 26 C 6 10, 18 4, 28 4 C 28 16, 22 28, 6 28 C 5.4 28, 4.6 27.4, 4 26 Z" />
+      <path d="M6 26 Q 16 18, 26 8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.45" />
+    </symbol>
+    <symbol id="heart" viewBox="0 0 32 32">
+      <path d="M16 28 C 4 20, 2 12, 8 8 C 12 5, 15 8, 16 10 C 17 8, 20 5, 24 8 C 30 12, 28 20, 16 28 Z" />
+    </symbol>
+    <symbol id="sun" viewBox="0 0 32 32">
+      <circle cx="16" cy="16" r="6" />
+      <g stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none">
+        <path d="M16 2 v4 M16 26 v4 M2 16 h4 M26 16 h4 M6 6 l3 3 M23 23 l3 3 M6 26 l3-3 M23 9 l3-3"/>
+      </g>
+    </symbol>
+    <symbol id="bone" viewBox="0 0 40 16">
+      <path d="M6 8 C 2 8, 0 4, 4 2 C 7 0, 11 2, 11 5 L 29 5 C 29 2, 33 0, 36 2 C 40 4, 38 8, 34 8 C 38 8, 40 12, 36 14 C 33 16, 29 14, 29 11 L 11 11 C 11 14, 7 16, 4 14 C 0 12, 2 8, 6 8 Z" />
+    </symbol>
+    <symbol id="arrow" viewBox="0 0 24 24">
+      <path d="M5 12 H 19 M 13 6 L 19 12 L 13 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="play" viewBox="0 0 24 24">
+      <path d="M9 6 L18 12 L9 18 Z" />
+    </symbol>
+    <symbol id="brand-mark" viewBox="0 0 40 40">
+      <circle cx="20" cy="20" r="18" fill="#F1F3EC" stroke="#586B48" stroke-width="1.5"/>
+      <use href="#paw" x="6" y="6" width="28" height="28" fill="#586B48"/>
+      <circle cx="30" cy="10" r="3.5" fill="#E8A92B"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header class="relative z-20">
+  <div class="max-w-[1320px] mx-auto px-8 pt-7 pb-4 flex items-center gap-10">
+    <a class="flex items-center gap-3" href="#">
+      <svg class="w-10 h-10"><use href="#brand-mark"/></svg>
+      <span class="font-serif text-2xl text-ink-900 tracking-tight">Re<span class="text-sun-400">·</span>Life</span>
+    </a>
+    <nav class="flex items-center gap-7 text-[14.5px] text-ink-700/80 ml-4">
+      <a class="hover:text-ink-900">Dostlarımız</a>
+      <a class="hover:text-ink-900">Hikâyeler</a>
+      <a class="hover:text-ink-900">Gönüllü Ol</a>
+      <a class="hover:text-ink-900">Barınaklar</a>
+    </nav>
+    <div class="flex-1"></div>
+    <div class="hidden md:flex items-center gap-2 paper-card rounded-full px-4 py-2 border border-ink-700/8 text-sm text-ink-700/70">
+      <svg class="w-4 h-4 text-sage-600"><use href="#heart" fill="currentColor"/></svg>
+      <span>Bu hafta <span class="text-ink-900 font-semibold">12</span> dost yuva buldu</span>
+    </div>
+    <button class="rounded-full bg-sage-600 hover:bg-sage-700 text-cream-50 px-5 py-2.5 text-[14px] font-medium shadow-card flex items-center gap-2" style="background-color: rgb(70, 86, 56)">Bir Dost Edin</button>
+  </div>
+</header>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="relative max-w-[1320px] mx-auto px-8 pt-8 pb-14 grid grid-cols-12 gap-8 items-end">
+  <div class="col-span-7">
+    <div class="inline-flex items-center gap-2 paper-card rounded-full px-3.5 py-1.5 border border-clay-200/60 text-[12px] text-clay-600 tracking-wide uppercase">
+      <span class="w-1.5 h-1.5 rounded-full bg-clay-400 pulse-soft"></span>
+      Dostluk Albümü · Mayıs ayı
+    </div>
+    <h1 class="mt-5 font-serif text-[78px] leading-[0.95] text-ink-900 tracking-tight" style="font-family: Inter">
+      Her dostun bir <em class="italic text-clay-500 doodle">hikâyesi</em>,
+      <br/>her hikâyenin bir <em class="italic text-sage-600" style="color: rgb(217, 34, 67)"><span style="color: #465638">eli</span></em> var.
+    </h1>
+    <p class="mt-6 text-[17px] text-ink-700/85 max-w-[560px] leading-[1.6]">
+      Burada onları sayılarla değil, isimleriyle tanırsınız. Hangi parka koşmak istediklerini,
+      kimden korktuklarını, en sevdikleri ses ve dokunuşu. Yolculuklarının bir adımına ortak olun — gerisini birlikte buluruz.
+    </p>
+    <div class="mt-8 flex items-center gap-6 text-[14px] text-ink-700/70">
+      <span class="flex items-center gap-2"><svg class="w-5 h-5 text-sage-600"><use href="#leaf" fill="currentColor"/></svg> 47 dost iyileşme yolunda</span>
+      <span class="w-px h-4 bg-ink-700/10"></span>
+      <span class="flex items-center gap-2"><svg class="w-5 h-5 text-sun-400"><use href="#sun" fill="currentColor"/></svg> 14 gönüllü bugün burada</span>
+      <span class="w-px h-4 bg-ink-700/10"></span>
+      <span class="flex items-center gap-2"><svg class="w-5 h-5 text-clay-500"><use href="#heart" fill="currentColor"/></svg> 312 dost notu okunuyor</span>
+    </div>
+  </div>
+
+  <!-- right side: collaged trio of polaroids + handwritten note -->
+  <div class="col-span-5 relative h-[400px]">
+    <!-- polaroid 1 -->
+    <div class="absolute top-6 left-2 w-[180px] paper-card rounded-2xl p-2.5 shadow-card -rotate-6 z-10">
+      <div class="photo cream rounded-xl photo-vignette w-full h-[180px]">
+        <span class="placeholder-mono">poyraz · 3 yaş</span>
+      </div>
+      <div class="font-hand text-[22px] text-clay-600 text-center mt-1.5 leading-none">poyraz ✿</div>
+    </div>
+    <!-- polaroid 2 (top right) -->
+    <div class="absolute top-0 right-4 w-[200px] paper-card rounded-2xl p-2.5 shadow-card rotate-6 z-20">
+      <div class="photo sun rounded-xl photo-vignette w-full h-[200px]">
+        <span class="placeholder-mono">leyla · 5 yaş</span>
+      </div>
+      <div class="font-hand text-[22px] text-clay-600 text-center mt-1.5 leading-none">leyla, her şeye gülen kız</div>
+    </div>
+    <!-- polaroid 3 (bottom center) -->
+    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[200px] paper-card rounded-2xl p-2.5 shadow-card -rotate-3 z-30">
+      <div class="photo sage rounded-xl photo-vignette w-full h-[170px]">
+        <span class="placeholder-mono">badem · 9 ay</span>
+      </div>
+      <div class="font-hand text-[22px] text-clay-600 text-center mt-1.5 leading-none">badem 🌱</div>
+    </div>
+    <!-- sticky note -->
+    <div class="absolute bottom-12 right-0 w-[170px] paper-note rounded-md p-3 shadow-note note-tilt-2 z-40">
+      <div class="font-hand text-[19px] text-ink-700 leading-[1.2]">
+        "bugün ilk kez elimden mama yedi. minicik bir an, ama gözü ışıdı."
+      </div>
+      <div class="font-sans text-[10px] text-ink-700/60 mt-2 uppercase tracking-wider">— camille · gönüllü</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FILTER STRIP
+     ============================================================ -->
+<section class="max-w-[1320px] mx-auto px-8">
+  <div class="paper-card rounded-3xl border border-cream-300/60 p-4 flex flex-wrap items-center gap-4">
+    <span class="font-serif text-[22px] text-ink-900 mr-2" style="font-family: Inter">Bugün kimi tanımak istersin?</span>
+    <div class="flex flex-wrap gap-2">
+      <button class="rounded-full bg-sage-600 text-cream-50 px-4 py-1.5 text-[13px] font-medium shadow-sm">Hepsi · 47</button>
+      <button class="rounded-full bg-cream-100 hover:bg-cream-200 text-ink-700 px-4 py-1.5 text-[13px] border border-cream-300/60">Köpekler</button>
+      <button class="rounded-full bg-cream-100 hover:bg-cream-200 text-ink-700 px-4 py-1.5 text-[13px] border border-cream-300/60">Kediler</button>
+      <button class="rounded-full bg-cream-100 hover:bg-cream-200 text-ink-700 px-4 py-1.5 text-[13px] border border-cream-300/60">Yavrular</button>
+      <button class="rounded-full bg-cream-100 hover:bg-cream-200 text-ink-700 px-4 py-1.5 text-[13px] border border-cream-300/60">Yaşlı dostlar</button>
+      <span class="w-px h-5 bg-ink-700/10 mx-1 self-center"></span>
+      <button class="rounded-full bg-peach-100 text-clay-600 px-4 py-1.5 text-[13px] border border-peach-200">İlk adıma yakın</button>
+      <button class="rounded-full bg-sage-100 text-sage-700 px-4 py-1.5 text-[13px] border border-sage-200">Yuvaya hazır</button>
+      <button class="rounded-full bg-sun-100 text-clay-600 px-4 py-1.5 text-[13px] border border-sun-200">Sabırlı bir ev arıyor</button>
+    </div>
+    <div class="flex-1"></div>
+    <div class="text-[12px] text-ink-700/55 font-sans tracking-wide uppercase">Sıralama · son güncellenen</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SOUL CARD GALLERY
+     ============================================================ -->
+<section class="max-w-[1320px] mx-auto px-8 py-12">
+  <div class="grid grid-cols-3 gap-8" id="gallery"></div>
+</section>
+
+<!-- ============================================================
+     DETAIL — featured open card (Milo)
+     ============================================================ -->
+<section class="max-w-[1320px] mx-auto px-8 pb-16">
+  <div class="flex items-baseline justify-between mb-6">
+    <div>
+      <div class="text-[12px] uppercase tracking-[0.16em] text-clay-500 font-medium mb-1">Bu haftaki konuk</div>
+      <h2 class="font-serif text-[44px] text-ink-900 leading-none">Milo'nun albümünden</h2>
+    </div>
+    <a class="text-[14px] text-sage-700 underline underline-offset-4">Tüm dostlara dön →</a>
+  </div>
+
+  <div class="grid grid-cols-12 gap-8">
+    <!-- LEFT — Big soul card with details -->
+    <div class="col-span-7 paper-card rounded-4xl p-7 shadow-card border border-cream-300/50 relative">
+
+      <!-- corner stamp -->
+      <div class="absolute -top-3 right-8 paper-note rounded-md px-3 py-1 shadow-note note-tilt-1 font-hand text-clay-600 text-[20px]">
+        15 mayıs '26
+      </div>
+
+      <div class="grid grid-cols-5 gap-5">
+        <!-- main photo -->
+        <div class="col-span-3 relative">
+          <div class="photo sage rounded-3xl photo-vignette w-full h-[340px]">
+            <span class="placeholder-mono">milo · sıcak portre</span>
+          </div>
+          <!-- mood badge -->
+          <div class="absolute bottom-4 left-4 paper-card rounded-full px-3.5 py-2 shadow-note flex items-center gap-2 border border-cream-300/60">
+            <span class="text-[18px]">🌞</span>
+            <span class="font-hand text-[19px] text-clay-600 leading-none">bugün çok enerjik!</span>
+          </div>
+          <!-- small thumbs -->
+          <div class="absolute top-4 right-4 flex flex-col gap-2">
+            <div class="w-12 h-12 photo clay rounded-xl border-2 border-cream-50 shadow-sm"></div>
+            <div class="w-12 h-12 photo sun rounded-xl border-2 border-cream-50 shadow-sm"></div>
+            <div class="w-12 h-12 photo peach rounded-xl border-2 border-cream-50 shadow-sm flex items-center justify-center text-clay-600 font-sans text-[10px] font-semibold">+4</div>
+          </div>
+        </div>
+
+        <!-- name + tags + journey -->
+        <div class="col-span-2">
+          <div class="text-[11px] uppercase tracking-[0.16em] text-sage-700 font-medium">Galgo · Erkek</div>
+          <h3 class="font-serif text-[58px] leading-[0.9] text-ink-900 mt-1">Milo</h3>
+          <div class="font-hand text-[24px] text-clay-500 mt-1 leading-none">4 yaşında, kalbi açık</div>
+
+          <div class="flex flex-wrap gap-1.5 mt-4">
+            <span class="rounded-full bg-sage-100 text-sage-700 px-3 py-1 text-[12px] border border-sage-200">Sakin</span>
+            <span class="rounded-full bg-clay-50 text-clay-600 px-3 py-1 text-[12px] border border-clay-200">Biraz Utangaç</span>
+            <span class="rounded-full bg-sun-100 text-clay-600 px-3 py-1 text-[12px] border border-sun-200">Yumuşak Kalpli</span>
+            <span class="rounded-full bg-peach-100 text-clay-600 px-3 py-1 text-[12px] border border-peach-200">Çocuk Dostu</span>
+            <span class="rounded-full bg-sage-100 text-sage-700 px-3 py-1 text-[12px] border border-sage-200">Köpek Dostu</span>
+          </div>
+
+          <div class="mt-5">
+            <div class="text-[11px] uppercase tracking-[0.16em] text-clay-500 mb-1.5">İyileşme yolculuğu</div>
+            <div class="font-serif text-[22px] text-ink-900 italic leading-tight">Yeniden koşmaya hazırlanıyor</div>
+            <!-- paw progress -->
+            <div class="flex items-center gap-1.5 mt-3">
+              <!-- 8 paws, 6 filled -->
+              <svg class="glyph text-clay-500"><use href="#paw" fill="currentColor"/></svg>
+              <svg class="glyph text-clay-500"><use href="#paw" fill="currentColor"/></svg>
+              <svg class="glyph text-clay-500"><use href="#paw" fill="currentColor"/></svg>
+              <svg class="glyph text-clay-500"><use href="#paw" fill="currentColor"/></svg>
+              <svg class="glyph text-clay-500"><use href="#paw" fill="currentColor"/></svg>
+              <svg class="glyph text-clay-500"><use href="#paw" fill="currentColor"/></svg>
+              <svg class="glyph text-clay-200"><use href="#paw" fill="currentColor"/></svg>
+              <svg class="glyph text-clay-200"><use href="#paw" fill="currentColor"/></svg>
+            </div>
+            <div class="flex items-baseline justify-between mt-2 text-[12px] text-ink-700/65 font-sans">
+              <span>6 adım atıldı</span>
+              <span class="text-clay-500 font-medium">2 adım kaldı</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- timeline / micro journey -->
+      <div class="mt-7 pt-6 border-t border-dashed border-clay-200">
+        <div class="grid grid-cols-4 gap-5">
+          <div>
+            <div class="flex items-center gap-2 mb-1.5">
+              <svg class="w-5 h-5 text-sage-600"><use href="#leaf" fill="currentColor"/></svg>
+              <span class="text-[12px] uppercase tracking-wider text-sage-700">Şubat</span>
+            </div>
+            <div class="font-serif text-[16px] text-ink-900 italic leading-snug">Yola düştü, biz bulduk</div>
+            <div class="text-[12.5px] text-ink-700/60 mt-1 leading-snug">Refugio Sur'a getirildi.</div>
+          </div>
+          <div>
+            <div class="flex items-center gap-2 mb-1.5">
+              <svg class="w-5 h-5 text-clay-500"><use href="#heart" fill="currentColor"/></svg>
+              <span class="text-[12px] uppercase tracking-wider text-clay-500">Mart</span>
+            </div>
+            <div class="font-serif text-[16px] text-ink-900 italic leading-snug">İlk insan dokunuşu</div>
+            <div class="text-[12.5px] text-ink-700/60 mt-1 leading-snug">Camille'in elinden mama yedi.</div>
+          </div>
+          <div>
+            <div class="flex items-center gap-2 mb-1.5">
+              <svg class="w-5 h-5 text-sun-400"><use href="#sun" fill="currentColor"/></svg>
+              <span class="text-[12px] uppercase tracking-wider text-clay-500">Nisan</span>
+            </div>
+            <div class="font-serif text-[16px] text-ink-900 italic leading-snug">İlk parkta koşuşu</div>
+            <div class="text-[12.5px] text-ink-700/60 mt-1 leading-snug">Otuz dakika, hiç durmadı.</div>
+          </div>
+          <div class="relative">
+            <span class="absolute -top-2 -right-2 paper-note rounded-md px-2 py-0.5 text-[10px] font-sans uppercase tracking-wider text-clay-600">şu an</span>
+            <div class="flex items-center gap-2 mb-1.5">
+              <svg class="w-5 h-5 text-peach-400"><use href="#paw" fill="currentColor"/></svg>
+              <span class="text-[12px] uppercase tracking-wider text-clay-500">Mayıs</span>
+            </div>
+            <div class="font-serif text-[16px] text-ink-900 italic leading-snug">Bir kapıyı bekliyor</div>
+            <div class="text-[12.5px] text-ink-700/60 mt-1 leading-snug">Aile aranıyor — sabırlı bir ev.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT column — friend notes + CTAs -->
+    <div class="col-span-5 flex flex-col gap-5">
+
+      <!-- friend's notes -->
+      <div class="paper-card rounded-4xl p-7 shadow-card border border-cream-300/50 relative">
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <div class="text-[11px] uppercase tracking-[0.16em] text-clay-500">Dost notları</div>
+            <h3 class="font-serif text-[28px] text-ink-900 leading-tight">Bugünden satırlar</h3>
+          </div>
+          <div class="font-hand text-[20px] text-sage-700 -rotate-3">14 not</div>
+        </div>
+
+        <div class="space-y-3">
+          <!-- note 1 -->
+          <div class="paper-note rounded-2xl p-4 shadow-note note-tilt-1">
+            <div class="font-hand text-[20px] text-ink-700 leading-[1.25]">
+              "Bugün ilk kez elimden mama yedi. Üç saniye sonra başını çekti — ama döndü, bir daha aldı."
+            </div>
+            <div class="flex items-center gap-2 mt-2 text-[11px] text-ink-700/65 font-sans">
+              <div class="w-5 h-5 rounded-full bg-sage-300"></div>
+              <span class="font-semibold text-ink-700">Camille R.</span>
+              <span>· koruyucu aile</span>
+              <span class="ml-auto uppercase tracking-wider">2 saat önce</span>
+            </div>
+          </div>
+          <!-- note 2 -->
+          <div class="rounded-2xl p-4 bg-sage-50 border border-sage-200 note-tilt-2">
+            <div class="font-hand text-[20px] text-ink-700 leading-[1.25]">
+              "Diğer köpeklerle parkta tanıştırdık. Roma'yı pek sevdi. İkisinin yan yana uyuduğu an — saklamak istedim."
+            </div>
+            <div class="flex items-center gap-2 mt-2 text-[11px] text-ink-700/65 font-sans">
+              <div class="w-5 h-5 rounded-full bg-clay-300"></div>
+              <span class="font-semibold text-ink-700">Theo R.</span>
+              <span>· yürüyüş gönüllüsü</span>
+              <span class="ml-auto uppercase tracking-wider">dün</span>
+            </div>
+          </div>
+          <!-- note 3 -->
+          <div class="rounded-2xl p-4 bg-sun-50 border border-sun-200 note-tilt-1">
+            <div class="font-hand text-[20px] text-ink-700 leading-[1.25]">
+              "Kuyruğunu sallamayı yeniden öğreniyor. Bu cümleyi yazmak istemezdim ama yazıyorum çünkü gerçek."
+            </div>
+            <div class="flex items-center gap-2 mt-2 text-[11px] text-ink-700/65 font-sans">
+              <div class="w-5 h-5 rounded-full bg-sun-300"></div>
+              <span class="font-semibold text-ink-700">Dr. Lía M.</span>
+              <span>· veteriner</span>
+              <span class="ml-auto uppercase tracking-wider">3 gün önce</span>
+            </div>
+          </div>
+        </div>
+
+        <button class="mt-5 w-full rounded-full bg-cream-100 hover:bg-cream-200 border border-cream-300/60 text-ink-700 text-[13px] py-2.5">
+          14 not daha oku
+        </button>
+      </div>
+
+      <!-- CTA card — "Onun şifasına ortak ol" -->
+      <div class="rounded-4xl p-7 shadow-card relative overflow-hidden"
+           style="background: linear-gradient(135deg, #F2C246 0%, #E88753 50%, #B97D4D 100%);">
+        <!-- decorative paws -->
+        <svg class="absolute -right-4 -top-4 w-32 h-32 text-cream-50/25"><use href="#paw" fill="currentColor"/></svg>
+        <svg class="absolute right-12 bottom-4 w-16 h-16 text-cream-50/15"><use href="#leaf" fill="currentColor"/></svg>
+
+        <div class="relative">
+          <div class="text-[11px] uppercase tracking-[0.16em] text-cream-50/80">Milo'nun yolculuğuna</div>
+          <h3 class="font-serif text-[40px] text-cream-50 leading-[0.95] mt-1">Onun <em>şifasına</em><br/>ortak ol</h3>
+
+          <div class="grid grid-cols-3 gap-2 mt-5">
+            <button class="paper-card rounded-2xl py-3 text-center hover:scale-[1.02] transition-transform">
+              <div class="font-serif text-[22px] text-clay-600">₺75</div>
+              <div class="text-[11px] text-ink-700/70 mt-0.5">bir günlük mama</div>
+            </button>
+            <button class="paper-card rounded-2xl py-3 text-center hover:scale-[1.02] transition-transform border-2 border-cream-50">
+              <div class="font-serif text-[22px] text-clay-600">₺220</div>
+              <div class="text-[11px] text-ink-700/70 mt-0.5">aşı + tasma</div>
+              <div class="text-[10px] text-clay-500 uppercase tracking-wider mt-1 font-semibold">en sevilen</div>
+            </button>
+            <button class="paper-card rounded-2xl py-3 text-center hover:scale-[1.02] transition-transform">
+              <div class="font-serif text-[22px] text-clay-600">₺500</div>
+              <div class="text-[11px] text-ink-700/70 mt-0.5">bir hafta bakım</div>
+            </button>
+          </div>
+
+          <div class="flex gap-2 mt-4">
+            <button class="flex-1 rounded-full bg-ink-900 hover:bg-ink-800 text-cream-50 py-3 text-[14px] font-medium flex items-center justify-center gap-2">
+              Ona Bir Adım Hediye Et
+              <svg class="w-4 h-4"><use href="#paw" fill="currentColor"/></svg>
+            </button>
+            <button class="rounded-full bg-cream-50 hover:bg-cream-100 text-ink-700 px-5 text-[14px] font-medium flex items-center gap-2">
+              <svg class="w-4 h-4"><use href="#heart" fill="currentColor"/></svg>
+              Listeme ekle
+            </button>
+          </div>
+
+          <div class="mt-4 text-[12px] text-cream-50/85 flex items-center gap-3">
+            <div class="flex -space-x-1.5">
+              <div class="w-6 h-6 rounded-full bg-sage-300 border-2 border-cream-50"></div>
+              <div class="w-6 h-6 rounded-full bg-cream-300 border-2 border-cream-50"></div>
+              <div class="w-6 h-6 rounded-full bg-peach-300 border-2 border-cream-50"></div>
+              <div class="w-6 h-6 rounded-full bg-clay-100 border-2 border-cream-50 flex items-center justify-center text-[8px] font-semibold text-clay-600">+184</div>
+            </div>
+            <span>184 dost zaten Milo'nun yanında.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER — soft
+     ============================================================ -->
+<footer class="border-t border-cream-300/50 mt-6">
+  <div class="max-w-[1320px] mx-auto px-8 py-10 grid grid-cols-12 gap-8 items-start">
+    <div class="col-span-5">
+      <div class="flex items-center gap-3">
+        <svg class="w-9 h-9"><use href="#brand-mark"/></svg>
+        <span class="font-serif text-2xl text-ink-900">Re·Life</span>
+      </div>
+      <p class="mt-3 text-[14px] text-ink-700/70 max-w-[380px] leading-[1.55]">
+        Bir iyileştirici dostuz — operatör değil. Her dostun yolculuğunu birlikte yürürüz; sayılar arkada kalır,
+        isimler ön sırada.
+      </p>
+      <div class="font-hand text-[22px] text-clay-500 mt-3">— sevgiyle, Porto'dan</div>
+    </div>
+    <div class="col-span-3">
+      <div class="text-[11px] uppercase tracking-[0.16em] text-clay-500 mb-3">Dostlar</div>
+      <ul class="space-y-2 text-[13.5px] text-ink-700/85">
+        <li>Tüm albüm</li><li>Yuva arayanlar</li><li>Yaşlı dostlar</li><li>Yavru dostlar</li>
+      </ul>
+    </div>
+    <div class="col-span-2">
+      <div class="text-[11px] uppercase tracking-[0.16em] text-clay-500 mb-3">Bizimle</div>
+      <ul class="space-y-2 text-[13.5px] text-ink-700/85">
+        <li>Gönüllü ol</li><li>Koruyucu aile</li><li>Hikâye yaz</li>
+      </ul>
+    </div>
+    <div class="col-span-2">
+      <div class="text-[11px] uppercase tracking-[0.16em] text-clay-500 mb-3">Şeffaflık</div>
+      <ul class="space-y-2 text-[13.5px] text-ink-700/85">
+        <li>Bağış raporu</li><li>Barınaklar</li><li>İletişim</li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-cream-300/50">
+    <div class="max-w-[1320px] mx-auto px-8 py-4 flex items-center justify-between text-[12px] text-ink-700/55">
+      <span>© MMXXVI Re·Life — sıcak bir kucak için.</span>
+      <span class="font-hand text-[18px] text-clay-500">tüm dostlara teşekkürler 🌿</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     JS — render the gallery cards
+     ============================================================ -->
+<script>
+  const animals = [
+    {
+      name: 'Poyraz', age: '3 yaş', kind: 'Karışık · Erkek',
+      tagline: 'rüzgar gibi koşar, hafifçe durur',
+      mood: { emoji: '🐶', text: 'Bugün çok enerjik!' },
+      photo: 'cream',
+      tilt: 'tilt-1',
+      tags: ['Oyunbaz', 'Çocuk Dostu', 'Hızlı Öğrenir'],
+      journey: { title: 'Yeniden koşmaya hazırlanıyor', total: 8, done: 6, glyph: 'paw' },
+      note: '"Bugün topun arkasından koşarken bir anlığına havalandı. Hatırlamış, eski kendini."',
+      noteAuthor: 'Sara · gönüllü',
+      donors: 142, target: '₺3.200', raised: '₺2.840', percent: 88,
+      cta: 'Ona Bir Adım Hediye Et',
+    },
+    {
+      name: 'Leyla', age: '5 yaş', kind: 'Tekir · Dişi',
+      tagline: 'her sese miyavlar, her şeye gülüyor gibi',
+      mood: { emoji: '🌞', text: 'Bugün sakin ve mırıltılı' },
+      photo: 'sun',
+      tilt: 'tilt-2',
+      tags: ['Sevecen', 'Konuşkan', 'Diğer Kedilerle Geçinir'],
+      journey: { title: 'Yeniden güvenmeyi öğreniyor', total: 6, done: 4, glyph: 'heart' },
+      note: '"Üç ay boyunca elime bakmadı. Bu sabah yanaşıp başını sürttü. Yazdım, kaybolmasın diye."',
+      noteAuthor: 'Akira · koruyucu aile',
+      donors: 89, target: '₺2.100', raised: '₺1.580', percent: 75,
+      cta: 'Onun Şifasına Ortak Ol',
+    },
+    {
+      name: 'Badem', age: '9 ay', kind: 'Labrador · Erkek',
+      tagline: 'her şeyi koklar, her şeye sarılır',
+      mood: { emoji: '🌱', text: 'Bugün yeni şeyler öğreniyor' },
+      photo: 'sage',
+      tilt: 'tilt-3',
+      tags: ['Yavru', 'Meraklı', 'Sosyal Tomurcuk'],
+      journey: { title: 'Yürümeyi yeniden öğreniyor', total: 8, done: 3, glyph: 'paw' },
+      note: '"Bugün ilk üç adımını attı. Sonra yere oturdu, ben yere oturdum, ikimiz ağladık."',
+      noteAuthor: 'Dr. Lía · veteriner',
+      donors: 67, target: '₺4.500', raised: '₺1.890', percent: 42,
+      cta: 'Ona Bir Adım Hediye Et', urgent: true,
+    },
+    {
+      name: 'Saffron', age: '6 yaş', kind: 'Spaniel · Dişi',
+      tagline: 'küçük bir aile arıyor, sessizce',
+      mood: { emoji: '💛', text: 'Bugün yuvasını düşünüyor' },
+      photo: 'peach',
+      tilt: 'tilt-1',
+      tags: ['Sakin', 'Yaşlı Dost', 'Sarılmacı', 'Eğitimli'],
+      journey: { title: 'Yuvaya hazırlanıyor', total: 6, done: 5, glyph: 'leaf' },
+      note: '"Misafirleri kapıda karşılamayı seviyor. Sanırım hep birine bir kapı açmak istemiş."',
+      noteAuthor: 'Camille · koruyucu aile',
+      donors: 211, target: '₺2.800', raised: '₺2.690', percent: 96,
+      cta: 'Onu Eve Götür', ready: true,
+    },
+    {
+      name: 'Toto', age: '2 yaş', kind: 'Sokak · Erkek',
+      tagline: 'kalbi büyük, dünyaya alışıyor henüz',
+      mood: { emoji: '🍃', text: 'Bugün biraz çekingen' },
+      photo: 'clay',
+      tilt: 'tilt-2',
+      tags: ['Biraz Utangaç', 'Yumuşak Kalpli', 'Sabırlı Eve Uygun'],
+      journey: { title: 'Yeniden insanı sevmeyi öğreniyor', total: 8, done: 2, glyph: 'heart' },
+      note: '"Sokakta bulunduğu köşeye götürdük. Geri dönmek istemedi. Belki burası artık daha güvenli."',
+      noteAuthor: 'Theo · gönüllü',
+      donors: 38, target: '₺3.600', raised: '₺980', percent: 27,
+      cta: 'Ona Bir Adım Hediye Et',
+    },
+    {
+      name: 'Luna', age: '4 yaş', kind: 'Beyaz Kedi · Dişi',
+      tagline: 'pencereyi sever, kucağı daha çok',
+      mood: { emoji: '✨', text: 'Bugün mutlu ve mırıltılı' },
+      photo: 'cream',
+      tilt: 'tilt-3',
+      tags: ['Sevecen', 'Apartmana Uygun', 'Tek Çocuk'],
+      journey: { title: 'Pencere kenarındaki yerini buluyor', total: 6, done: 4, glyph: 'paw' },
+      note: '"Her sabah saat yedide pencereye gelip kuşları izliyor. Onun küçük ritüeli."',
+      noteAuthor: 'Yara · gönüllü',
+      donors: 124, target: '₺1.800', raised: '₺1.430', percent: 79,
+      cta: 'Onun Şifasına Ortak Ol',
+    },
+  ];
+
+  const photoBg = {
+    cream: 'cream', sage: 'sage', clay: 'clay', sun: 'sun', peach: 'peach',
+  };
+
+  function progress(g) {
+    const cells = [];
+    for (let i = 0; i < g.total; i++) {
+      const filled = i < g.done;
+      cells.push(`<svg class="w-6 h-6 ${filled ? 'text-clay-500' : 'text-clay-200'}"><use href="#${g.glyph}" fill="currentColor"/></svg>`);
+    }
+    return cells.join('');
+  }
+
+  function badge(a) {
+    if (a.ready) return '<span class="rounded-full bg-sage-100 text-sage-700 px-3 py-1 text-[11px] uppercase tracking-wider font-medium border border-sage-200">yuvaya hazır</span>';
+    if (a.urgent) return '<span class="rounded-full bg-peach-100 text-clay-600 px-3 py-1 text-[11px] uppercase tracking-wider font-medium border border-peach-200">ilk adıma yakın</span>';
+    return '<span class="rounded-full bg-cream-100 text-clay-500 px-3 py-1 text-[11px] uppercase tracking-wider font-medium border border-cream-300/60">iyileşiyor</span>';
+  }
+
+  function tagPill(t, i) {
+    const palettes = [
+      'bg-sage-100 text-sage-700 border-sage-200',
+      'bg-clay-50 text-clay-600 border-clay-200',
+      'bg-sun-100 text-clay-600 border-sun-200',
+      'bg-peach-100 text-clay-600 border-peach-200',
+    ];
+    const cls = palettes[i % palettes.length];
+    return `<span class="rounded-full ${cls} px-2.5 py-0.5 text-[11.5px] border">${t}</span>`;
+  }
+
+  function card(a) {
+    return `
+    <article class="soul-card paper-card rounded-4xl shadow-card border border-cream-300/50 overflow-hidden ${a.tilt} relative">
+      <!-- photo -->
+      <div class="relative">
+        <div class="photo ${photoBg[a.photo]} photo-vignette h-[280px]">
+          <span class="placeholder-mono">${a.name.toLowerCase()} · doğal portre</span>
+        </div>
+        <!-- mood pill, floating -->
+        <div class="absolute bottom-3 left-3 paper-card rounded-full px-3 py-1.5 shadow-note flex items-center gap-2 border border-cream-300/60">
+          <span class="text-[14px]">${a.mood.emoji}</span>
+          <span class="font-hand text-[16px] text-clay-600 leading-none">${a.mood.text}</span>
+        </div>
+        <!-- save -->
+        <button class="absolute top-3 right-3 w-9 h-9 rounded-full bg-cream-50/85 hover:bg-cream-50 flex items-center justify-center shadow-note">
+          <svg class="w-4 h-4 text-clay-500"><use href="#heart" fill="currentColor"/></svg>
+        </button>
+        <!-- status badge -->
+        <div class="absolute top-3 left-3">${badge(a)}</div>
+        <!-- play-bloom reveal -->
+        <div class="play-bloom absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div class="w-14 h-14 rounded-full bg-cream-50/90 flex items-center justify-center shadow-lift opacity-0 group-hover:opacity-100">
+            <svg class="w-5 h-5 text-clay-500 ml-0.5"><use href="#play" fill="currentColor"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- body -->
+      <div class="p-5">
+        <div class="flex items-baseline justify-between gap-3">
+          <div>
+            <div class="text-[10.5px] uppercase tracking-[0.16em] text-sage-700/80 font-medium">${a.kind}</div>
+            <h3 class="font-serif text-[40px] leading-[0.92] text-ink-900 mt-0.5">${a.name}</h3>
+            <div class="font-hand text-[19px] text-clay-500 leading-none mt-1">${a.tagline}</div>
+          </div>
+          <span class="font-sans text-[12px] text-ink-700/60">${a.age}</span>
+        </div>
+
+        <!-- tags -->
+        <div class="flex flex-wrap gap-1.5 mt-4">
+          ${a.tags.map(tagPill).join('')}
+        </div>
+
+        <!-- journey -->
+        <div class="mt-5">
+          <div class="flex items-baseline justify-between">
+            <span class="font-serif italic text-[17px] text-ink-900 leading-tight">${a.journey.title}</span>
+            <span class="text-[11px] text-clay-500 font-medium uppercase tracking-wider">${a.journey.done}/${a.journey.total}</span>
+          </div>
+          <div class="flex items-center gap-1 mt-2">
+            ${progress(a.journey)}
+          </div>
+        </div>
+
+        <!-- reveal panel (on hover) -->
+        <div class="reveal">
+          <div class="mt-5 paper-note rounded-2xl p-3.5 shadow-note">
+            <div class="text-[10.5px] uppercase tracking-[0.16em] text-clay-500 mb-1.5 flex items-center gap-1.5">
+              <svg class="w-3.5 h-3.5"><use href="#heart" fill="currentColor"/></svg>
+              Dost Notu
+            </div>
+            <div class="font-hand text-[18px] text-ink-700 leading-[1.25]">${a.note}</div>
+            <div class="text-[11px] text-ink-700/60 mt-1.5 font-sans uppercase tracking-wider">— ${a.noteAuthor}</div>
+          </div>
+        </div>
+
+        <!-- raise + CTA -->
+        <div class="mt-5 pt-4 border-t border-dashed border-clay-200">
+          <div class="flex items-baseline justify-between text-[12px] text-ink-700/70 mb-2">
+            <span><span class="text-ink-900 font-semibold">${a.raised}</span> <span class="text-ink-700/50">/ ${a.target}</span></span>
+            <span>${a.donors} dost yanında</span>
+          </div>
+          <div class="h-2 rounded-full bg-cream-200 overflow-hidden mb-3.5">
+            <div class="h-full rounded-full" style="width:${a.percent}%; background: linear-gradient(90deg, #C58A1B, #E8A92B, #E88753);"></div>
+          </div>
+          <button class="w-full rounded-full bg-ink-900 hover:bg-ink-800 text-cream-50 py-3 text-[13.5px] font-medium flex items-center justify-center gap-2 group">
+            <span>${a.cta}</span>
+            <svg class="w-4 h-4 transition-transform group-hover:translate-x-0.5"><use href="#arrow" stroke="currentColor"/></svg>
+          </button>
+        </div>
+      </div>
+    </article>`;
+  }
+
+  document.getElementById('gallery').innerHTML = animals.map(card).join('');
+</script>
+
+</body>
+</html>

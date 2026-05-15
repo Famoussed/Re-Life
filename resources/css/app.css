@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Sans:wght@400;500;600;700&family=Caveat:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    html, body {
+        background-color: #FBF6EA;
+        color: #2A2520;
+    }
+}
+
+@layer components {
+    /* Sıcak kağıt dokulu zemin */
+    .paper {
+        background-color: #FBF6EA;
+        background-image:
+            radial-gradient(ellipse 800px 400px at 10% 5%, rgba(242,194,70,0.10), transparent 60%),
+            radial-gradient(ellipse 700px 500px at 95% 30%, rgba(232,135,83,0.07), transparent 65%),
+            radial-gradient(ellipse 900px 600px at 50% 110%, rgba(168,184,145,0.18), transparent 60%);
+    }
+    .paper-card {
+        background: linear-gradient(180deg, #FCF7EB 0%, #F8F0DE 100%);
+    }
+    .paper-note {
+        background: linear-gradient(180deg, #FEF7E1 0%, #FBEBB0 100%);
+    }
+
+    /* Fotoğraf yer tutucu — sıcak çizgili */
+    .photo {
+        background-color: #C8D2B5;
+        background-image:
+            radial-gradient(ellipse at 50% 35%, rgba(255,255,255,0.35), transparent 60%),
+            repeating-linear-gradient(135deg, rgba(60,42,20,0.06) 0 1px, transparent 1px 9px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        background-size: cover;
+        background-position: center;
+    }
+    .photo.sage  { background-color: #C8D2B5; }
+    .photo.clay  { background-color: #E5C39E; }
+    .photo.sun   { background-color: #FBEBB0; }
+    .photo.peach { background-color: #F8C8A8; }
+    .photo.cream { background-color: #EFE5CB; }
+    .photo .placeholder-mono {
+        font-size: 10px;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        color: rgba(60,42,20,.55);
+        background: rgba(251,246,234,0.8);
+        padding: 5px 9px;
+        border-radius: 999px;
+    }
+
+    .photo-vignette::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse at 50% 60%, transparent 50%, rgba(60,42,20,0.2));
+        pointer-events: none;
+    }
+
+    /* Altı çizili doodle vurgusu */
+    .doodle {
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 14'><path d='M2 9 C 40 2, 80 14, 120 6 S 200 4, 218 8' fill='none' stroke='%23E8A92B' stroke-width='3' stroke-linecap='round'/></svg>");
+        background-repeat: no-repeat;
+        background-position: 0 100%;
+        background-size: 100% 12px;
+        padding-bottom: 6px;
+    }
+}
+
+@layer utilities {
+    /* Nefes alan nokta */
+    @keyframes pulse-soft { 0%,100% { opacity: .85; } 50% { opacity: .35; } }
+    .pulse-soft { animation: pulse-soft 2.4s ease-in-out infinite; }
+
+    /* Kart eğimleri */
+    .tilt-1 { transform: rotate(-0.6deg); }
+    .tilt-2 { transform: rotate(0.4deg); }
+    .tilt-3 { transform: rotate(-0.2deg); }
+    .note-tilt-1 { transform: rotate(-1.6deg); }
+    .note-tilt-2 { transform: rotate(2deg); }
+
+    /* Hover yükselme — ruh kartları */
+    .soul-card { transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s; }
+    .soul-card:hover {
+        transform: translateY(-6px) rotate(-0.3deg);
+        box-shadow: 0 4px 10px rgba(60,42,20,.07), 0 30px 60px -16px rgba(60,42,20,.32), 0 70px 110px -50px rgba(60,42,20,.4);
+    }
+}

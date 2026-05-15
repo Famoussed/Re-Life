@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd \"c:/Users/selimdev/Desktop/ReLife/docs\" && rm -f README.md 00-proje-ozeti.md 01-mimari.md 02-veri-modeli.md 03-roller-yetkiler.md 04-is-kurallari.md 05-sayfalar-akislar.md 06-implementasyon-plani.md 07-acik-konular.md 08-faz-2.md && ls)",
+      "Bash(php -v)"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\selimdev\\Desktop\\ReLife\\docs"
+    ]
+  }
+}
