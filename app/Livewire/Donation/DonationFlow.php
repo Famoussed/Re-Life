@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Livewire\Donation;
 
-use App\Enums\ShelterStatus;
-use App\Models\Need;
-use App\Models\Shelter;
-use App\Services\DonationService;
+use App\Enums\Shelter\ShelterStatus;
+use App\Models\Animal\Need;
+use App\Models\Shelter\Shelter;
+use App\Services\Donation\DonationService;
 use Illuminate\Contracts\View\View;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;

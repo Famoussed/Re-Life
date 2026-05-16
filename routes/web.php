@@ -2,26 +2,26 @@
 
 declare(strict_types=1);
 
-use App\Livewire\Admin\AnimalManager;
-use App\Livewire\Admin\AnnouncementManager;
-use App\Livewire\Admin\Dashboard as AdminDashboard;
-use App\Livewire\Admin\DonationList as AdminDonationList;
-use App\Livewire\Admin\DonorList;
-use App\Livewire\Admin\NeedManager;
-use App\Livewire\Admin\ShelterProfileEdit;
-use App\Livewire\Auth\RegisterShelterAdmin;
+use App\Livewire\Account\UserList;
+use App\Livewire\Account\UserProfile;
+use App\Livewire\Animal\AnimalDetail;
+use App\Livewire\Animal\AnimalList;
+use App\Livewire\Animal\AnimalManager;
+use App\Livewire\Animal\NeedManager;
+use App\Livewire\Donation\BadgeManager;
 use App\Livewire\Donation\DonationFlow;
+use App\Livewire\Donation\DonationList;
+use App\Livewire\Donation\DonorList;
+use App\Livewire\Donation\Leaderboard;
 use App\Livewire\Notification\NotificationCenter;
-use App\Livewire\Public\AnimalDetail;
-use App\Livewire\Public\AnimalList;
-use App\Livewire\Public\Leaderboard;
-use App\Livewire\Public\ShelterProfile;
-use App\Livewire\Public\UserProfile;
-use App\Livewire\Superadmin\BadgeManager;
-use App\Livewire\Superadmin\Dashboard as SuperadminDashboard;
-use App\Livewire\Superadmin\ShelterApprovals;
-use App\Livewire\Superadmin\ShelterList;
-use App\Livewire\Superadmin\UserList;
+use App\Livewire\Shelter\AdminDashboard;
+use App\Livewire\Shelter\AnnouncementManager;
+use App\Livewire\Shelter\RegisterShelterAdmin;
+use App\Livewire\Shelter\ShelterApprovals;
+use App\Livewire\Shelter\ShelterList;
+use App\Livewire\Shelter\ShelterProfile;
+use App\Livewire\Shelter\ShelterProfileEdit;
+use App\Livewire\Shelter\SuperadminDashboard;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -71,7 +71,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     Route::get('/', AdminDashboard::class)->name('dashboard');
     Route::get('/animals', AnimalManager::class)->name('animals');
     Route::get('/needs', NeedManager::class)->name('needs');
-    Route::get('/donations', AdminDonationList::class)->name('donations');
+    Route::get('/donations', DonationList::class)->name('donations');
     Route::get('/donors', DonorList::class)->name('donors');
     Route::get('/announcements', AnnouncementManager::class)->name('announcements');
     Route::get('/shelter', ShelterProfileEdit::class)->name('shelter');
