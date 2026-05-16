@@ -26,17 +26,51 @@
         <div class="paper-card rounded-3xl border border-cream-300/60 p-4 flex flex-wrap items-center gap-3">
             <span class="font-serif text-[20px] text-ink-900 mr-2">Bugün kimi tanımak istersin?</span>
 
-            <div class="flex flex-wrap gap-2">
+            <div class="flex flex-wrap gap-2 items-center">
                 <button wire:click="$set('species', '')"
                     class="rounded-full px-4 py-1.5 text-[13px] border {{ $species === '' ? 'bg-sage-600 text-cream-50 border-sage-600' : 'bg-cream-100 text-ink-700 border-cream-300/60 hover:bg-cream-200' }}">
                     Hepsi
                 </button>
-                @foreach(\App\Enums\Animal\AnimalSpecies::cases() as $s)
-                    <button wire:click="$set('species', '{{ $s->value }}')"
-                        class="rounded-full px-4 py-1.5 text-[13px] border {{ $species === $s->value ? 'bg-sage-600 text-cream-50 border-sage-600' : 'bg-cream-100 text-ink-700 border-cream-300/60 hover:bg-cream-200' }}">
-                        {{ $s->label() }}
+
+                <!-- Kedi Grubu -->
+                <div x-data="{ open: false }" class="relative" @click.away="open = false">
+                    <button @click="open = !open" 
+                        class="rounded-full px-4 py-1.5 text-[13px] border flex items-center gap-1 {{ in_array($species, ['cat', 'kitten']) ? 'bg-sage-600 text-cream-50 border-sage-600' : 'bg-cream-100 text-ink-700 border-cream-300/60 hover:bg-cream-200' }}">
+                        Kedi
+                        <svg class="w-3 h-3 transition-transform duration-200" :class="{'rotate-180': open}" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
-                @endforeach
+                    <div x-show="open" x-transition.opacity
+                        class="absolute top-full left-0 mt-1 w-36 bg-cream-50 border border-cream-300/60 rounded-xl shadow-sm overflow-hidden z-10 flex flex-col py-1" style="display: none;">
+                        <button wire:click="$set('species', 'cat')" @click="open = false"
+                            class="px-4 py-2 text-[13px] text-left hover:bg-cream-100 {{ $species === 'cat' ? 'font-medium text-sage-600' : 'text-ink-700' }}">
+                            Yetişkin Kedi
+                        </button>
+                        <button wire:click="$set('species', 'kitten')" @click="open = false"
+                            class="px-4 py-2 text-[13px] text-left hover:bg-cream-100 {{ $species === 'kitten' ? 'font-medium text-sage-600' : 'text-ink-700' }}">
+                            Yavru Kedi
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Köpek Grubu -->
+                <div x-data="{ open: false }" class="relative" @click.away="open = false">
+                    <button @click="open = !open" 
+                        class="rounded-full px-4 py-1.5 text-[13px] border flex items-center gap-1 {{ in_array($species, ['dog', 'puppy']) ? 'bg-sage-600 text-cream-50 border-sage-600' : 'bg-cream-100 text-ink-700 border-cream-300/60 hover:bg-cream-200' }}">
+                        Köpek
+                        <svg class="w-3 h-3 transition-transform duration-200" :class="{'rotate-180': open}" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div x-show="open" x-transition.opacity
+                        class="absolute top-full left-0 mt-1 w-36 bg-cream-50 border border-cream-300/60 rounded-xl shadow-sm overflow-hidden z-10 flex flex-col py-1" style="display: none;">
+                        <button wire:click="$set('species', 'dog')" @click="open = false"
+                            class="px-4 py-2 text-[13px] text-left hover:bg-cream-100 {{ $species === 'dog' ? 'font-medium text-sage-600' : 'text-ink-700' }}">
+                            Yetişkin Köpek
+                        </button>
+                        <button wire:click="$set('species', 'puppy')" @click="open = false"
+                            class="px-4 py-2 text-[13px] text-left hover:bg-cream-100 {{ $species === 'puppy' ? 'font-medium text-sage-600' : 'text-ink-700' }}">
+                            Yavru Köpek
+                        </button>
+                    </div>
+                </div>
             </div>
 
             <span class="w-px h-5 bg-ink-700/10 mx-1 self-center hidden sm:block"></span>
