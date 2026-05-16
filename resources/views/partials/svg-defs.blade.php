@@ -28,5 +28,32 @@
             <use href="#paw" x="6" y="6" width="28" height="28" fill="#586B48"/>
             <circle cx="30" cy="10" r="3.5" fill="#E8A92B"/>
         </symbol>
+        <symbol id="bone" viewBox="0 0 40 16">
+            <path d="M6 8 C 2 8, 0 4, 4 2 C 7 0, 11 2, 11 5 L 29 5 C 29 2, 33 0, 36 2 C 40 4, 38 8, 34 8 C 38 8, 40 12, 36 14 C 33 16, 29 14, 29 11 L 11 11 C 11 14, 7 16, 4 14 C 0 12, 2 8, 6 8 Z" />
+        </symbol>
+        <symbol id="syringe" viewBox="0 0 32 32">
+            <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 29 L 8 24" />
+                <rect x="9" y="13" width="14" height="10" rx="1.5" transform="rotate(-45 16 18)" fill="currentColor" fill-opacity="0.25"/>
+                <path d="M22 6 L 28 12" />
+                <path d="M19 9 L 25 15" />
+                <path d="M11 19 L 14 22" stroke-width="3"/>
+            </g>
+        </symbol>
+        <symbol id="blanket" viewBox="0 0 32 32">
+            <path d="M5 9 L 27 9 L 27 23 Q 27 26, 24 26 L 8 26 Q 5 26, 5 23 Z" />
+            <path d="M5 14 L 27 14 M 5 19 L 27 19" fill="none" stroke="rgba(60,42,20,0.3)" stroke-width="1"/>
+        </symbol>
+        <symbol id="check" viewBox="0 0 24 24">
+            <path d="M5 12 L 10 17 L 19 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+        <symbol id="lock" viewBox="0 0 24 24">
+            <rect x="5" y="10" width="14" height="11" rx="2"/>
+            <path d="M8 10 V 7 a 4 4 0 0 1 8 0 V 10" fill="none" stroke="currentColor" stroke-width="2"/>
+        </symbol>
+        <symbol id="crown" viewBox="0 0 32 24">
+            <path d="M2 6 L 8 18 L 16 4 L 24 18 L 30 6 L 28 22 L 4 22 Z"/>
+            <circle cx="2" cy="6" r="2"/><circle cx="30" cy="6" r="2"/><circle cx="16" cy="4" r="2"/>
+        </symbol>
     </defs>
 </svg>
