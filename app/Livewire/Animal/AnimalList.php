@@ -13,7 +13,7 @@ use Livewire\Attributes\Url;
 use Livewire\Component;
 
 #[Layout('layouts.app')]
-#[Title('Dostluk Albümü — Re·Life')]
+#[Title('Re·Life')]
 class AnimalList extends Component
 {
     #[Url]

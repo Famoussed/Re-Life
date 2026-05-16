@@ -10,7 +10,7 @@
                 <div class="text-[11px] uppercase tracking-[0.16em] text-clay-500 font-medium">Dostlardan biri</div>
                 <h1 class="font-serif text-[42px] leading-none text-ink-900 mt-1">{{ $user->name }}</h1>
                 @if($badge)
-                    <div class="font-hand text-[22px] text-clay-500 mt-1">🏅 {{ $badge->name }}</div>
+                    <div class="font-serif text-[18px] text-clay-500 mt-1">🏅 {{ $badge->name }}</div>
                 @else
                     <div class="font-hand text-[22px] text-clay-500 mt-1">yolculuğun henüz başında</div>
                 @endif
