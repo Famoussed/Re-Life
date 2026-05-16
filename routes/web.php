@@ -22,6 +22,8 @@ use App\Livewire\Shelter\ShelterList;
 use App\Livewire\Shelter\ShelterProfile;
 use App\Livewire\Shelter\ShelterProfileEdit;
 use App\Livewire\Shelter\SuperadminDashboard;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,6 +49,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/donate', DonationFlow::class)->name('donate');
     Route::get('/me/notifications', NotificationCenter::class)->name('notifications');
     Route::view('/profile', 'profile')->name('profile');
+
+    // Çıkış (Breeze Livewire stack'inde hazır route yok — burada tanımlanır).
+    Route::post('/logout', function (Request $request) {
+        Auth::guard('web')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('home');
+    })->name('logout');
 
     // Giriş sonrası role göre yönlendirme (Breeze 'dashboard' adını kullanır).
     Route::get('/dashboard', function () {
