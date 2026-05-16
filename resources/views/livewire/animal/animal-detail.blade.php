@@ -398,6 +398,9 @@
                         </div>
                         <div class="font-hand text-[18px] text-clay-600 text-center mt-1.5 leading-none">{{ mb_strtolower($animal->name) }} · {{ $i+1 }}</div>
                     </div>
+                @endforeach
+            </div>
+        </div>
     </div>
 
     <!-- DONATION MODAL -->
