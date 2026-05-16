@@ -1,19 +1,57 @@
 <div>
     {{-- HERO --}}
     <section class="max-w-[1320px] mx-auto px-5 sm:px-8 pt-6 pb-12">
-        <h1 class="font-serif text-[44px] sm:text-[68px] leading-[0.96] text-ink-900 tracking-tight max-w-[820px]">
-            Her dostun bir <em class="italic text-clay-500 doodle">hikâyesi</em>,
-            her hikâyenin bir <em class="italic text-sage-600">eli</em> var.
-        </h1>
-        <p class="mt-5 text-[16px] sm:text-[17px] text-ink-700/85 max-w-[560px] leading-[1.6]">
-            Burada onları sayılarla değil isimleriyle tanırsınız. Yolculuklarının bir adımına
-            ortak olun — gerisini birlikte buluruz.
-        </p>
-        <div class="mt-7 flex items-center gap-5 text-[14px] text-ink-700/70 flex-wrap">
-            <span class="flex items-center gap-2">
-                <svg class="w-5 h-5 text-sage-600"><use href="#leaf" fill="currentColor"/></svg>
-                {{ $totalActive }} dost iyileşme yolunda
-            </span>
+        <div class="grid lg:grid-cols-[1.15fr,0.85fr] gap-10 lg:gap-12 items-center">
+            {{-- Sol: Metin --}}
+            <div>
+                <h1 class="font-serif text-[44px] sm:text-[68px] leading-[0.96] text-ink-900 tracking-tight max-w-[820px]">
+                    Her dostun bir <em class="italic text-clay-500 doodle">hikâyesi</em>,
+                    her hikâyenin bir <em class="italic text-sage-600">eli</em> var.
+                </h1>
+                <p class="mt-5 text-[16px] sm:text-[17px] text-ink-700/85 max-w-[560px] leading-[1.6]">
+                    Burada onları sayılarla değil isimleriyle tanırsınız. Yolculuklarının bir adımına
+                    ortak olun — gerisini birlikte buluruz.
+                </p>
+                <div class="mt-7 flex items-center gap-5 text-[14px] text-ink-700/70 flex-wrap">
+                    <span class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-sage-600"><use href="#leaf" fill="currentColor"/></svg>
+                        {{ $totalActive }} dost iyileşme yolunda
+                    </span>
+                </div>
+            </div>
+
+            {{-- Sağ: Dekoratif polaroid kolajı --}}
+            <div class="relative hidden lg:block h-[360px]" aria-hidden="true">
+                {{-- Yumuşak renk lekeleri --}}
+                <span class="absolute top-4 right-2 w-56 h-56 rounded-full bg-sun-200/45 blur-3xl"></span>
+                <span class="absolute bottom-0 left-4 w-52 h-52 rounded-full bg-sage-200/45 blur-3xl"></span>
+
+                {{-- Arka polaroid --}}
+                <div class="absolute top-2 right-6 w-[210px] tilt-2 paper-card rounded-2xl border border-cream-300/60 shadow-card p-2.5">
+                    <div class="photo sage h-[170px] rounded-xl bg-cover bg-center"
+                         style="background-image:url('https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=600&auto=format&fit=crop')"></div>
+                    <div class="font-hand text-[19px] text-clay-500 text-center pt-1.5">yeni bir başlangıç</div>
+                </div>
+
+                {{-- Ön polaroid --}}
+                <div class="absolute bottom-4 left-2 w-[230px] note-tilt-1 paper-card rounded-2xl border border-cream-300/60 shadow-lift p-2.5">
+                    <div class="photo clay h-[185px] rounded-xl bg-cover bg-center"
+                         style="background-image:url('https://images.unsplash.com/photo-1552053831-71594a27632d?q=80&w=600&auto=format&fit=crop')"></div>
+                    <div class="font-hand text-[19px] text-sage-600 text-center pt-1.5">birlikte iyiyiz</div>
+                </div>
+
+                {{-- Yapışkan not — istatistik --}}
+                <div class="absolute top-0 left-6 note-tilt-2 paper-note rounded-2xl shadow-note px-4 py-3 flex items-center gap-2.5">
+                    <svg class="w-7 h-7 text-clay-500"><use href="#heart" fill="currentColor"/></svg>
+                    <div class="leading-tight">
+                        <div class="font-serif text-[22px] text-ink-900">{{ $totalActive }}</div>
+                        <div class="text-[11px] text-ink-700/65 uppercase tracking-wide">dost umutla bekliyor</div>
+                    </div>
+                </div>
+
+                {{-- Küçük paw süsü --}}
+                <svg class="absolute bottom-2 right-10 w-9 h-9 text-sage-300 rotate-12"><use href="#paw" fill="currentColor"/></svg>
+            </div>
         </div>
     </section>
 
