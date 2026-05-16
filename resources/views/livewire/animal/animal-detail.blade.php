@@ -4,6 +4,40 @@
         $tone = $tones[$animal->id % count($tones)];
         $activeNeeds = $animal->needs->where('status', \App\Enums\Animal\NeedStatus::Active);
         $completedNeeds = $animal->needs->where('status', \App\Enums\Animal\NeedStatus::Completed);
+
+        // Anasayfa kartıyla aynı fallback görsel sistemi
+        $fallbackImages = [
+            'dog'    => [
+                'https://images.unsplash.com/photo-1552053831-71594a27632d?q=80&w=700&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1587300003388-59208cc962cb?q=80&w=700&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?q=80&w=700&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1477884213360-7e9d7dcc1e48?q=80&w=700&auto=format&fit=crop',
+            ],
+            'puppy'  => [
+                'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?q=80&w=700&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?q=80&w=700&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1600804340584-c7db2eacf0bf?q=80&w=700&auto=format&fit=crop',
+            ],
+            'cat'    => [
+                'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=700&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1533743983669-94fa5c4338ec?q=80&w=700&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1573865526739-10659fec78a5?q=80&w=700&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1495360010541-f48722b34f7d?q=80&w=700&auto=format&fit=crop',
+            ],
+            'kitten' => [
+                'https://images.unsplash.com/photo-1574158622682-e40e69881006?q=80&w=700&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1529778873920-4da4926a72c2?q=80&w=700&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1596854407944-bf87f6fdd049?q=80&w=700&auto=format&fit=crop',
+            ],
+        ];
+
+        $speciesKey = $animal->species->value ?? 'dog';
+        $pool = $fallbackImages[$speciesKey] ?? $fallbackImages['dog'];
+        $fallbackUrl = $pool[$animal->id % count($pool)];
+
+        $photoStyle = $animal->photo_path
+            ? "background-image:url('" . \Illuminate\Support\Facades\Storage::url($animal->photo_path) . "')"
+            : "background-image:url('{$fallbackUrl}')";
     @endphp
 
     <a href="{{ route('home') }}" class="text-[13px] text-sage-700 hover:text-sage-600">← Tüm dostlara dön</a>
@@ -12,9 +46,7 @@
         {{-- SOL — foto + hikâye --}}
         <div class="lg:col-span-7">
             <div class="paper-card rounded-4xl p-6 sm:p-7 shadow-card border border-cream-300/50">
-                <x-photo :tone="$tone" :path="$animal->photo_path"
-                         :label="mb_strtolower($animal->name).' · sıcak portre'"
-                         class="w-full h-[360px] rounded-3xl" />
+                <div class="photo photo-vignette {{ $tone }} w-full h-[360px] bg-cover bg-center rounded-3xl" style="{{ $photoStyle }}"></div>
 
                 <div class="mt-5 flex items-baseline justify-between flex-wrap gap-2">
                     <div>
@@ -75,6 +107,18 @@
                             Şu an aktif bir ihtiyacı yok — yine de barınağına genel destek olabilirsin.
                         </div>
                     @endforelse
+
+                    @if($activeNeeds->isNotEmpty())
+                        @php
+                            $totalNeeded = $activeNeeds->sum(fn($n) => max(0, $n->target_amount - $n->collected_amount));
+                        @endphp
+                        <a href="{{ route('donate', ['shelter' => $animal->shelter_id]) }}"
+                           class="mt-4 w-full rounded-full bg-sage-600 hover:bg-sage-700 text-cream-50 py-3 text-[13.5px] font-semibold flex items-center justify-center gap-2 shadow-card">
+                            Tüm Masrafları Karşıla
+                            <span class="text-[12px] font-medium">(₺{{ number_format((float) $totalNeeded, 0, ',', '.') }})</span>
+                            <svg class="w-4 h-4"><use href="#paw" fill="currentColor"/></svg>
+                        </a>
+                    @endif
 
                     @foreach($completedNeeds as $need)
                         <div class="rounded-2xl bg-sage-50 border border-sage-200 p-4">

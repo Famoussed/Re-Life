@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <title>{{ $title ?? 'Re·Life — Dostluk Albümü' }}</title>
+    <title>{{ $title ?? 'Re·Life' }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
 </head>
@@ -56,7 +56,7 @@
 
 <footer class="border-t border-cream-300/50 mt-10">
     <div class="max-w-[1320px] mx-auto px-5 sm:px-8 py-10 grid sm:grid-cols-12 gap-8 items-start">
-        <div class="sm:col-span-6">
+        <div class="sm:col-span-4">
             <div class="flex items-center gap-3">
                 <svg class="w-9 h-9"><use href="#brand-mark"/></svg>
                 <span class="font-serif text-2xl text-ink-900">Re·Life</span>
@@ -67,17 +67,29 @@
             </p>
             <div class="font-hand text-[22px] text-clay-500 mt-3">— sevgiyle</div>
         </div>
-        <div class="sm:col-span-3">
+        <div class="sm:col-span-2">
             <div class="text-[11px] uppercase tracking-[0.16em] text-clay-500 mb-3">Dostlar</div>
             <ul class="space-y-2 text-[13.5px] text-ink-700/85">
                 <li><a href="{{ route('home') }}" class="hover:text-ink-900">Tüm albüm</a></li>
                 <li><a href="{{ route('leaderboard') }}" class="hover:text-ink-900">Sıralama</a></li>
             </ul>
         </div>
-        <div class="sm:col-span-3">
+        <div class="sm:col-span-2">
             <div class="text-[11px] uppercase tracking-[0.16em] text-clay-500 mb-3">Barınaklar</div>
             <ul class="space-y-2 text-[13.5px] text-ink-700/85">
                 <li><a href="{{ route('admin.register') }}" class="hover:text-ink-900">Barınağını kaydet</a></li>
+            </ul>
+        </div>
+        <div class="sm:col-span-4">
+            <div class="text-[11px] uppercase tracking-[0.16em] text-clay-500 mb-3">Destekçilerimiz</div>
+            <ul class="space-y-2 text-[13.5px] text-ink-700/85">
+                <li>Erdem Veterinerlik</li>
+                <li>Özyurdum Ulaşım</li>
+                <li>DevBOS Yazılım</li>
+                <li>Şahin Teknoloji</li>
+                <li>Çiftçi Bağış Grubu</li>
+                <li>Yeşil Kalp Vakfı</li>
+                <li>Dost El Platformu</li>
             </ul>
         </div>
     </div>
