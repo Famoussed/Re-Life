@@ -40,12 +40,27 @@ kazanır ve global sıralamada yer alır.
 | Domain Entity saf PHP değil | Eloquent relationship, scope, cast özelliklerini kaybetmek mantıksız |
 | DTO katmanı yok | Livewire `rules()` / `validated()` array olarak yeterli, bu ölçekte overkill |
 
-### Neden Namespace-Based (Modüler Değil)?
+### Modüler Organizasyon (Tip-öncelikli + Modül Alt Klasörü)
 
-- Modüller arası bağımlılık yüksek (Bağış → Hayvan → İhtiyaç → Barınak, Bildirim → hepsi)
-- Küçük ekip — modül izolasyonu gereksiz overhead
-- Monolith — bağımsız deploy ihtiyacı yok
-- Laravel'in doğal namespace yapısıyla uyumlu
+Kod, 3 kişilik ekibin paralel geliştirme yapabilmesi için **modüllere** bölünmüştür.
+Düzen **tip-öncelikli + modül alt klasörü**: her tip klasörünün (`Models/`, `Services/`,
+`Actions/`, `Livewire/` …) içinde modül alt klasörleri bulunur.
+
+```
+app/Services/Donation/DonationService.php
+app/Actions/Donation/CreateDonationAction.php
+app/Models/Donation/Donation.php
+app/Livewire/Donation/DonationFlow.php
+```
+
+**5 modül:** `Shelter`, `Animal`, `Donation`, `Account`, `Notification`. Her geliştirici
+bir veya iki modülü sahiplenir; aynı tip klasörünün farklı modül alt klasörlerinde
+çalışıldığından merge çakışması en aza iner.
+
+- Modüller monolith içinde kalır — bağımsız deploy yok, paket sınırı yok.
+- Modüller arası referans serbesttir (örn. `Donation` modülü `Animal` modelini kullanır);
+  amaç fiziksel deploy izolasyonu değil, **kod sahipliği ve paralel geliştirmedir**.
+- Modül dağılımı: [08-PROJECT_STRUCTURE.md](./08-PROJECT_STRUCTURE.md).
 
 ---
 

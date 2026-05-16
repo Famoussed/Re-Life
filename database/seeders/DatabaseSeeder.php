@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
-use App\Enums\Role;
-use App\Enums\ShelterStatus;
-use App\Models\Animal;
-use App\Models\Badge;
-use App\Models\Need;
-use App\Models\Shelter;
-use App\Models\User;
-use App\Services\DonationService;
+use App\Enums\Account\Role;
+use App\Enums\Shelter\ShelterStatus;
+use App\Models\Animal\Animal;
+use App\Models\Donation\Badge;
+use App\Models\Animal\Need;
+use App\Models\Shelter\Shelter;
+use App\Models\Account\User;
+use App\Services\Donation\DonationService;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
