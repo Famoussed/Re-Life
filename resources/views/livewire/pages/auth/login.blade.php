@@ -47,7 +47,7 @@ new #[Layout('layouts.auth-split')] class extends Component
                 <br>küçük bir <span class="italic font-hand text-[64px] text-sage-600">kapı.</span>
             </h1>
             <p class="mt-8 text-[15px] text-ink-700/80 leading-relaxed max-w-sm">
-                Burada bir dost edinmenin, bir hikâyeyi takip etmenin ve birinin gününe dokunmanın sıcak yolu var. İçeri gel — kucağımızda yer hep bulunur.
+                Hayvan sahibi olmak için onları evinize almanız gerekmiyor. Burada bir dostun hikâyesini takip etmenin ve hayatına dokunmanın en sıcak yolu var.
             </p>
         </div>
 
