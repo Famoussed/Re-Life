@@ -49,6 +49,22 @@ new #[Layout('layouts.auth-split')] class extends Component
             <p class="mt-8 text-[15px] text-ink-700/80 leading-relaxed max-w-sm">
                 Hayvan sahibi olmak için onları evinize almanız gerekmiyor. Burada bir dostun hikâyesini takip etmenin ve hayatına dokunmanın en sıcak yolu var.
             </p>
+
+            <!-- İstatistik Chips -->
+            <div class="flex flex-wrap gap-3 mt-8">
+                <div class="flex items-center gap-2 bg-white/80 border border-cream-200 rounded-2xl px-4 py-2.5 shadow-sm">
+                    <span class="text-[22px] font-serif text-sage-700">12</span>
+                    <span class="text-[11px] text-ink-700/60 leading-tight">aktif<br>barınak</span>
+                </div>
+                <div class="flex items-center gap-2 bg-white/80 border border-cream-200 rounded-2xl px-4 py-2.5 shadow-sm">
+                    <span class="text-[22px] font-serif text-clay-600">340+</span>
+                    <span class="text-[11px] text-ink-700/60 leading-tight">iyileşen<br>can</span>
+                </div>
+                <div class="flex items-center gap-2 bg-white/80 border border-cream-200 rounded-2xl px-4 py-2.5 shadow-sm">
+                    <span class="text-[22px] font-serif text-[#a88d3e]">₺2.4M</span>
+                    <span class="text-[11px] text-ink-700/60 leading-tight">toplam<br>destek</span>
+                </div>
+            </div>
         </div>
 
         <!-- Polaroid Kartlar -->

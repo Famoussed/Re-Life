@@ -88,10 +88,10 @@ new #[Layout('layouts.auth-split')] class extends Component
     }
 }; ?>
 
-<div class="flex flex-col lg:flex-row w-full min-h-screen font-sans text-ink-800">
+<div class="flex flex-col lg:flex-row w-full h-screen font-sans text-ink-800 overflow-hidden">
 
     <!-- SOL TARAF -->
-    <div class="hidden lg:flex flex-col justify-between w-1/2 p-12 bg-cream-50 relative overflow-hidden">
+    <div wire:ignore class="hidden lg:flex flex-col justify-between w-1/2 h-full p-12 bg-cream-50 relative overflow-hidden">
         <!-- Arka Plan Dekorasyonları -->
         <div class="absolute -top-32 -left-32 w-96 h-96 bg-clay-100/40 rounded-full blur-3xl opacity-60 pointer-events-none"></div>
         <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-sage-100/30 rounded-full blur-3xl opacity-60 pointer-events-none"></div>
@@ -161,78 +161,110 @@ new #[Layout('layouts.auth-split')] class extends Component
     </div>
 
     <!-- SAĞ TARAF (Form) -->
-    <div class="w-full lg:w-1/2 flex items-start justify-center bg-cream-100 px-6 sm:px-10 py-12 relative overflow-y-auto">
+    <div class="w-full lg:w-1/2 h-full overflow-y-auto flex items-start justify-center bg-cream-100 px-6 sm:px-10 py-12 relative">
         <div class="w-full max-w-[440px]">
 
             <!-- Başlık -->
             <div class="mb-8">
-                <div class="text-[11px] font-semibold text-ink-900/40 tracking-[0.2em] uppercase mb-2">Yeni Hesap</div>
+                <div class="text-[11px] font-semibold text-ink-900/40 tracking-[0.2em] uppercase mb-3">Yeni Hesap</div>
                 <h2 class="font-serif text-[38px] leading-[1.1] text-ink-900">Aramıza katıl.</h2>
+                <p class="mt-2 text-[13.5px] text-ink-700/55 leading-relaxed">Rolünü seç ve bilgilerini gir — hayvanlara dokunan büyük bir ailenin parçası ol.</p>
             </div>
 
             <!-- ROL SEÇİCİ -->
             <div class="mb-7">
-                <div class="text-[10px] font-semibold tracking-[0.15em] uppercase text-ink-900/35 mb-3">Hesap Türü</div>
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="text-[10px] font-semibold tracking-[0.15em] uppercase text-ink-900/40">Hesap Türünü Seç</span>
+                    <div class="flex-1 h-px bg-cream-300/60"></div>
+                </div>
                 <div class="grid grid-cols-3 gap-2.5">
 
                     <!-- İyileştirici Dost -->
                     <button type="button" wire:click="setRole('user')"
                         class="group relative rounded-2xl border p-4 text-left transition-all duration-300 overflow-hidden
                         {{ $role === 'user'
-                            ? 'bg-sage-700 border-sage-700 shadow-lg shadow-sage-700/20'
-                            : 'bg-white border-cream-200 hover:border-sage-300 hover:shadow-md' }}">
-                        <div class="w-7 h-7 rounded-lg flex items-center justify-center mb-3 transition-colors
-                            {{ $role === 'user' ? 'bg-white/20' : 'bg-cream-100 group-hover:bg-sage-50' }}">
-                            <svg class="w-3.5 h-3.5 {{ $role === 'user' ? 'text-white' : 'text-sage-600' }}"><use href="#heart"/></svg>
+                            ? 'bg-white border-sage-500 ring-2 ring-sage-500/20 shadow-md'
+                            : 'bg-white border-cream-200 hover:border-sage-300 hover:shadow-sm' }}">
+                        <!-- İkon -->
+                        <div class="w-8 h-8 rounded-xl flex items-center justify-center mb-3 transition-all duration-300
+                            {{ $role === 'user' ? 'bg-sage-600' : 'bg-sage-50 group-hover:bg-sage-100' }}">
+                            <svg class="w-4 h-4 {{ $role === 'user' ? 'text-white' : 'text-sage-600' }}"><use href="#heart"/></svg>
                         </div>
-                        <div class="text-[11.5px] font-bold leading-tight {{ $role === 'user' ? 'text-white' : 'text-ink-900' }}">İyileştirici<br>Dost</div>
-                        @if($role === 'user')
-                            <div class="absolute bottom-2 right-2 w-2 h-2 rounded-full bg-sun-300"></div>
-                        @endif
+                        <!-- Başlık -->
+                        <div class="text-[12px] font-bold leading-tight mb-1 text-ink-900">İyileştirici<br>Dost</div>
+                        <!-- Alt açıklama -->
+                        <div class="text-[9.5px] leading-snug text-ink-700/45">Bağış yap &amp; takip et</div>
+                        <!-- Seçim çizgisi -->
+                        <div class="absolute bottom-0 left-0 right-0 h-0.5 rounded-b-2xl transition-all duration-300 {{ $role === 'user' ? 'bg-sage-500' : 'bg-transparent' }}"></div>
                     </button>
 
                     <!-- Barınak Sahibi -->
                     <button type="button" wire:click="setRole('admin')"
                         class="group relative rounded-2xl border p-4 text-left transition-all duration-300 overflow-hidden
                         {{ $role === 'admin'
-                            ? 'bg-clay-600 border-clay-600 shadow-lg shadow-clay-600/20'
-                            : 'bg-white border-cream-200 hover:border-clay-300 hover:shadow-md' }}">
-                        <div class="w-7 h-7 rounded-lg flex items-center justify-center mb-3 transition-colors
-                            {{ $role === 'admin' ? 'bg-white/20' : 'bg-cream-100 group-hover:bg-clay-50' }}">
-                            <svg class="w-3.5 h-3.5 {{ $role === 'admin' ? 'text-white' : 'text-clay-600' }}"><use href="#leaf"/></svg>
+                            ? 'bg-white border-clay-500 ring-2 ring-clay-500/20 shadow-md'
+                            : 'bg-white border-cream-200 hover:border-clay-300 hover:shadow-sm' }}">
+                        <!-- İkon -->
+                        <div class="w-8 h-8 rounded-xl flex items-center justify-center mb-3 transition-all duration-300
+                            {{ $role === 'admin' ? 'bg-clay-600' : 'bg-clay-50 group-hover:bg-clay-100' }}">
+                            <svg class="w-4 h-4 {{ $role === 'admin' ? 'text-white' : 'text-clay-600' }}"><use href="#leaf"/></svg>
                         </div>
-                        <div class="text-[11.5px] font-bold leading-tight {{ $role === 'admin' ? 'text-white' : 'text-ink-900' }}">Barınak<br>Sahibi</div>
-                        @if($role === 'admin')
-                            <div class="absolute bottom-2 right-2 w-2 h-2 rounded-full bg-sun-300"></div>
-                        @endif
+                        <!-- Başlık -->
+                        <div class="text-[12px] font-bold leading-tight mb-1 text-ink-900">Barınak<br>Sahibi</div>
+                        <!-- Alt açıklama -->
+                        <div class="text-[9.5px] leading-snug text-ink-700/45">Barınağını yönet</div>
+                        <!-- Seçim çizgisi -->
+                        <div class="absolute bottom-0 left-0 right-0 h-0.5 rounded-b-2xl transition-all duration-300 {{ $role === 'admin' ? 'bg-clay-500' : 'bg-transparent' }}"></div>
                     </button>
 
                     <!-- Veteriner -->
                     <button type="button" wire:click="setRole('veterinarian')"
                         class="group relative rounded-2xl border p-4 text-left transition-all duration-300 overflow-hidden
                         {{ $role === 'veterinarian'
-                            ? 'bg-[#7a6a2e] border-[#7a6a2e] shadow-lg shadow-[#7a6a2e]/20'
-                            : 'bg-white border-cream-200 hover:border-[#c4a94a] hover:shadow-md' }}">
-                        <div class="w-7 h-7 rounded-lg flex items-center justify-center mb-3 transition-colors
-                            {{ $role === 'veterinarian' ? 'bg-white/20' : 'bg-cream-100 group-hover:bg-[#fdf5d9]' }}">
-                            <svg class="w-3.5 h-3.5 {{ $role === 'veterinarian' ? 'text-white' : 'text-[#9a7e30]' }}"><use href="#brand-mark"/></svg>
+                            ? 'bg-white border-[#a88d3e] ring-2 ring-[#a88d3e]/20 shadow-md'
+                            : 'bg-white border-cream-200 hover:border-[#c4a94a] hover:shadow-sm' }}">
+                        <!-- İkon -->
+                        <div class="w-8 h-8 rounded-xl flex items-center justify-center mb-3 transition-all duration-300
+                            {{ $role === 'veterinarian' ? 'bg-[#a88d3e]' : 'bg-[#fdf5d9] group-hover:bg-[#f7ebb0]' }}">
+                            <svg class="w-4 h-4 {{ $role === 'veterinarian' ? 'text-white' : 'text-[#9a7e30]' }}"><use href="#brand-mark"/></svg>
                         </div>
-                        <div class="text-[11.5px] font-bold leading-tight {{ $role === 'veterinarian' ? 'text-white' : 'text-ink-900' }}">Veteriner</div>
-                        @if($role === 'veterinarian')
-                            <div class="absolute bottom-2 right-2 w-2 h-2 rounded-full bg-sun-300"></div>
-                        @endif
+                        <!-- Başlık -->
+                        <div class="text-[12px] font-bold leading-tight mb-1 text-ink-900">Veteriner</div>
+                        <!-- Alt açıklama -->
+                        <div class="text-[9.5px] leading-snug text-ink-700/45">Sağlık notu düş</div>
+                        <!-- Seçim çizgisi -->
+                        <div class="absolute bottom-0 left-0 right-0 h-0.5 rounded-b-2xl transition-all duration-300 {{ $role === 'veterinarian' ? 'bg-[#a88d3e]' : 'bg-transparent' }}"></div>
                     </button>
                 </div>
 
-                <!-- Rol Açıklaması -->
-                <div class="mt-3 px-1">
-                    @if($role === 'user')
-                        <p class="text-[12px] text-ink-700/60 leading-snug">Bağış yaparak veya hikayeleri takip ederek hayvanlara destek olun.</p>
-                    @elseif($role === 'admin')
-                        <p class="text-[12px] text-ink-700/60 leading-snug">Barınağınızı platforma ekleyin, hayvanları yönetin ve destek toplayın. <span class="font-semibold text-clay-600">Onay gerektirir.</span></p>
-                    @else
-                        <p class="text-[12px] text-ink-700/60 leading-snug">Veteriner kimliğinizle barınaklara uzaktan destek verin, sağlık notları düşün.</p>
-                    @endif
+                <!-- Rol Açıklaması (Dinamik) -->
+                <div class="mt-4 flex items-start gap-3 p-3.5 rounded-2xl transition-all duration-300
+                    {{ $role === 'user' ? 'bg-sage-50/70 border border-sage-100' : ($role === 'admin' ? 'bg-clay-50/70 border border-clay-100' : 'bg-[#fdf8e8]/70 border border-[#e8d88a]/40') }}">
+                    <div class="mt-0.5 shrink-0">
+                        @if($role === 'user')
+                            <div class="w-5 h-5 rounded-full bg-sage-200 flex items-center justify-center">
+                                <svg class="w-2.5 h-2.5 text-sage-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                            </div>
+                        @elseif($role === 'admin')
+                            <div class="w-5 h-5 rounded-full bg-clay-200 flex items-center justify-center">
+                                <svg class="w-2.5 h-2.5 text-clay-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </div>
+                        @else
+                            <div class="w-5 h-5 rounded-full bg-[#e8d88a]/60 flex items-center justify-center">
+                                <svg class="w-2.5 h-2.5 text-[#7a6a2e]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                            </div>
+                        @endif
+                    </div>
+                    <p class="text-[12px] leading-relaxed
+                        {{ $role === 'user' ? 'text-sage-800/80' : ($role === 'admin' ? 'text-clay-800/80' : 'text-[#5a4a1e]/80') }}">
+                        @if($role === 'user')
+                            Bağış yaparak veya hikayeleri takip ederek hayvanlara destek olun. Hemen ücretsiz başlayabilirsiniz.
+                        @elseif($role === 'admin')
+                            Barınağınızı platforma ekleyin ve destek toplayın. <strong class="font-semibold">Platform yöneticisinin onayı gerektirir.</strong>
+                        @else
+                            Veteriner kimliğinizle barınaklara uzaktan destek verin, sağlık notları düşün ve takip edin.
+                        @endif
+                    </p>
                 </div>
             </div>
 

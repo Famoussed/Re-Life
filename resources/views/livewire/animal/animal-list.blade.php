@@ -1,11 +1,7 @@
 <div>
     {{-- HERO --}}
     <section class="max-w-[1320px] mx-auto px-5 sm:px-8 pt-6 pb-12">
-        <div class="inline-flex items-center gap-2 paper-card rounded-full px-3.5 py-1.5 border border-clay-200/60 text-[12px] text-clay-600 tracking-wide uppercase">
-            <span class="w-1.5 h-1.5 rounded-full bg-clay-400 pulse-soft"></span>
-            Dostluk Albümü
-        </div>
-        <h1 class="mt-5 font-serif text-[44px] sm:text-[68px] leading-[0.96] text-ink-900 tracking-tight max-w-[820px]">
+        <h1 class="font-serif text-[44px] sm:text-[68px] leading-[0.96] text-ink-900 tracking-tight max-w-[820px]">
             Her dostun bir <em class="italic text-clay-500 doodle">hikâyesi</em>,
             her hikâyenin bir <em class="italic text-sage-600">eli</em> var.
         </h1>
