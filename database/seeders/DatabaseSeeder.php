@@ -6,14 +6,18 @@ namespace Database\Seeders;
 
 use App\Enums\Account\Role;
 use App\Enums\Shelter\ShelterStatus;
-use App\Models\Animal\Animal;
-use App\Models\Donation\Badge;
-use App\Models\Animal\Need;
-use App\Models\Shelter\Shelter;
 use App\Models\Account\User;
+use App\Models\Animal\Animal;
+use App\Models\Animal\Need;
+use App\Models\Animal\RecoveryUpdate;
+use App\Models\Donation\Badge;
+use App\Models\Donation\Donation;
+use App\Models\Shelter\Shelter;
+use App\Notifications\Notification\RecoveryUpdatePublishedNotification;
 use App\Services\Donation\DonationService;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Notification;
 
 class DatabaseSeeder extends Seeder
 {
@@ -51,6 +55,7 @@ class DatabaseSeeder extends Seeder
         ];
 
         $this->seedDonations($donors);
+        $this->seedRecoveryUpdates();
     }
 
     private function seedBadges(): void
@@ -208,6 +213,83 @@ class DatabaseSeeder extends Seeder
                 'card_number' => '4242 4242 4242 '.random_int(1000, 9999),
                 'card_holder' => $donors[$d]->name,
             ]);
+        }
+    }
+
+    /**
+     * Bağış almış hayvanlara iyileşme günlüğü kayıtları ekler ve
+     * o hayvanın bağışçılarına bildirim gönderir.
+     */
+    private function seedRecoveryUpdates(): void
+    {
+        // Hayvan başına iyileşme güncellemesi şablonları: [başlık, not, fotoğraf URL'leri].
+        $templates = [
+            [
+                'Tedavisine başlandı 🩺',
+                'Veterinerimiz ilk muayeneyi tamamladı. Tahliller iyi, tedavi süreci planlandı. Yakında daha güzel haberler paylaşacağız.',
+                [
+                    'https://images.unsplash.com/photo-1559190394-df5a28aab5c5?q=80&w=700&auto=format&fit=crop',
+                    'https://images.unsplash.com/photo-1576201836106-db1758fd1c97?q=80&w=700&auto=format&fit=crop',
+                ],
+            ],
+            [
+                'İlk adımlarını attı 🐾',
+                'Bugün bahçede ilk kez koşturdu! İştahı yerinde, gözlerindeki ışık geri geldi. Desteğiniz olmasaydı bu mümkün olmazdı.',
+                [
+                    'https://images.unsplash.com/photo-1601758228041-f3b2795255f1?q=80&w=700&auto=format&fit=crop',
+                    'https://images.unsplash.com/photo-1583337130417-3346a1be7dee?q=80&w=700&auto=format&fit=crop',
+                    'https://images.unsplash.com/photo-1518717758536-85ae29035b6d?q=80&w=700&auto=format&fit=crop',
+                ],
+            ],
+            [
+                'Artık çok daha mutlu 💛',
+                'Sosyalleşme süreci harika gidiyor. Diğer dostlarıyla oyun oynuyor, insanlarla arası çok iyi. Yuvaya hazırlanıyor.',
+                [
+                    'https://images.unsplash.com/photo-1450778869180-41d0601e046e?q=80&w=700&auto=format&fit=crop',
+                    'https://images.unsplash.com/photo-1574144611937-0df059b5ef3e?q=80&w=700&auto=format&fit=crop',
+                ],
+            ],
+        ];
+
+        // Bağış almış (ihtiyacı üzerinden) hayvanları bul.
+        $needIds = Donation::whereNotNull('need_id')->distinct()->pluck('need_id');
+        $animalIds = Need::withoutGlobalScopes()->whereIn('id', $needIds)->pluck('animal_id')->unique();
+        $animals = Animal::withoutGlobalScopes()->whereIn('id', $animalIds)->get();
+
+        $t = 0;
+        foreach ($animals as $animal) {
+            // Her hayvana 1-2 güncelleme — eskiden yeniye doğru.
+            $updateCount = ($t % 2 === 0) ? 2 : 1;
+
+            for ($u = 0; $u < $updateCount; $u++) {
+                [$title, $note, $photos] = $templates[($t + $u) % count($templates)];
+
+                $update = RecoveryUpdate::create([
+                    'animal_id' => $animal->id,
+                    'shelter_id' => $animal->shelter_id,
+                    'title' => $title,
+                    'note' => $note,
+                ]);
+
+                foreach ($photos as $index => $photoUrl) {
+                    $update->images()->create([
+                        'image_path' => $photoUrl,
+                        'sort_order' => $index,
+                    ]);
+                }
+
+                // Bu hayvana doğrudan ya da ihtiyaçları üzerinden bağış yapanları bildir.
+                $animalNeedIds = $animal->needs()->withoutGlobalScopes()->pluck('id');
+                $donorIds = Donation::where(function ($q) use ($animal, $animalNeedIds) {
+                    $q->where('animal_id', $animal->id)
+                        ->orWhereIn('need_id', $animalNeedIds);
+                })->whereNotNull('user_id')->distinct()->pluck('user_id');
+
+                $recipients = User::whereIn('id', $donorIds)->get();
+                Notification::send($recipients, new RecoveryUpdatePublishedNotification($update));
+            }
+
+            $t++;
         }
     }
 }

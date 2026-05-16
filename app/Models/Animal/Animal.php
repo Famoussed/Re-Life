@@ -9,6 +9,7 @@ use App\Enums\Animal\Gender;
 use App\Models\Donation\Donation;
 use App\Models\Shelter\Shelter;
 use App\Scopes\Shelter\ShelterScope;
+use Database\Factories\AnimalFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -16,7 +17,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Animal extends Model
 {
-    /** @use HasFactory<\Database\Factories\AnimalFactory> */
+    /** @use HasFactory<AnimalFactory> */
     use HasFactory;
 
     /**
@@ -69,5 +70,10 @@ class Animal extends Model
     public function donations(): HasMany
     {
         return $this->hasMany(Donation::class);
+    }
+
+    public function recoveryUpdates(): HasMany
+    {
+        return $this->hasMany(RecoveryUpdate::class);
     }
 }

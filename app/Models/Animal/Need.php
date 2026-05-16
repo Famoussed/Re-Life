@@ -9,6 +9,7 @@ use App\Enums\Animal\NeedType;
 use App\Models\Donation\Donation;
 use App\Models\Shelter\Shelter;
 use App\Scopes\Shelter\ShelterScope;
+use Database\Factories\NeedFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -16,7 +17,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Need extends Model
 {
-    /** @use HasFactory<\Database\Factories\NeedFactory> */
+    /** @use HasFactory<NeedFactory> */
     use HasFactory;
 
     /**
@@ -83,5 +84,13 @@ class Need extends Model
         }
 
         return (int) min(100, round((float) $this->collected_amount / (float) $this->target_amount * 100));
+    }
+
+    /**
+     * Hedefe ulaşmak için kalan tutar (negatif olmaz).
+     */
+    public function remainingAmount(): float
+    {
+        return max(0.0, (float) $this->target_amount - (float) $this->collected_amount);
     }
 }

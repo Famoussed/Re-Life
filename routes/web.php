@@ -8,6 +8,7 @@ use App\Livewire\Animal\AnimalDetail;
 use App\Livewire\Animal\AnimalList;
 use App\Livewire\Animal\AnimalManager;
 use App\Livewire\Animal\NeedManager;
+use App\Livewire\Animal\RecoveryUpdateManager;
 use App\Livewire\Donation\BadgeManager;
 use App\Livewire\Donation\DonationFlow;
 use App\Livewire\Donation\DonationList;
@@ -82,6 +83,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     Route::get('/', AdminDashboard::class)->name('dashboard');
     Route::get('/animals', AnimalManager::class)->name('animals');
     Route::get('/needs', NeedManager::class)->name('needs');
+    Route::get('/recovery-updates', RecoveryUpdateManager::class)->name('recovery-updates');
     Route::get('/donations', DonationList::class)->name('donations');
     Route::get('/donors', DonorList::class)->name('donors');
     Route::get('/announcements', AnnouncementManager::class)->name('announcements');

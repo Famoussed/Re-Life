@@ -112,7 +112,7 @@
                         @php
                             $totalNeeded = $activeNeeds->sum(fn($n) => max(0, $n->target_amount - $n->collected_amount));
                         @endphp
-                        <a href="{{ route('donate', ['shelter' => $animal->shelter_id]) }}"
+                        <a href="{{ route('donate', ['animal' => $animal->id]) }}"
                            class="mt-4 w-full rounded-full bg-sage-600 hover:bg-sage-700 text-cream-50 py-3 text-[13.5px] font-semibold flex items-center justify-center gap-2 shadow-card">
                             Tüm Masrafları Karşıla
                             <span class="text-[12px] font-medium">(₺{{ number_format((float) $totalNeeded, 0, ',', '.') }})</span>
@@ -137,4 +137,52 @@
             </div>
         </div>
     </div>
+
+    {{-- İYİLEŞME GÜNLÜĞÜ --}}
+    <section id="iyilesme" class="mt-8 scroll-mt-24">
+        <div class="paper-card rounded-4xl p-6 sm:p-8 shadow-card border border-cream-300/50">
+            <div class="flex items-center gap-2.5">
+                <svg class="w-6 h-6 text-sage-600"><use href="#leaf" fill="currentColor"/></svg>
+                <h2 class="font-modern text-[28px] text-ink-900 leading-tight">İyileşme Günlüğü</h2>
+            </div>
+            <p class="text-[13px] text-ink-700/60 mt-1">
+                {{ $animal->name }}'in iyileşme yolculuğundan kareler — desteğinle mümkün oldu.
+            </p>
+
+            @if($animal->recoveryUpdates->isEmpty())
+                <div class="mt-6 rounded-2xl bg-sage-50 border border-sage-200 p-5 text-[14px] text-sage-700">
+                    Henüz bir iyileşme güncellemesi paylaşılmamış. {{ $animal->name }} hakkında yeni bir
+                    haber çıktığında bağışçılar ilk öğrenenler olacak. 🌿
+                </div>
+            @else
+                <div class="mt-6 space-y-6">
+                    @foreach($animal->recoveryUpdates as $update)
+                        <article class="relative pl-6 border-l-2 border-dashed border-clay-200"
+                                 wire:key="recovery-{{ $update->id }}">
+                            <span class="absolute -left-[7px] top-1.5 w-3 h-3 rounded-full bg-sage-500 border-2 border-cream-50"></span>
+                            <div class="flex items-baseline justify-between gap-3 flex-wrap">
+                                <h3 class="font-modern text-[20px] text-ink-900">{{ $update->title }}</h3>
+                                <span class="text-[12px] text-ink-700/55">{{ $update->created_at->diffForHumans() }}</span>
+                            </div>
+                            <p class="text-[14.5px] text-ink-700/80 mt-1.5 leading-[1.6] whitespace-pre-line">{{ $update->note }}</p>
+
+                            @if($update->images->isNotEmpty())
+                                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 mt-3">
+                                    @foreach($update->images as $image)
+                                        <a href="{{ $image->url }}" target="_blank" rel="noopener"
+                                           class="block group">
+                                            <img src="{{ $image->url }}"
+                                                 alt="{{ $animal->name }} iyileşme fotoğrafı"
+                                                 loading="lazy"
+                                                 class="w-full h-36 object-cover rounded-2xl border border-cream-300/60 shadow-note transition group-hover:opacity-90">
+                                        </a>
+                                    @endforeach
+                                </div>
+                            @endif
+                        </article>
+                    @endforeach
+                </div>
+            @endif
+        </div>
+    </section>
 </div>

@@ -22,7 +22,11 @@ class AnimalDetail extends Component
             404
         );
 
-        $this->animal = $animal->load(['shelter', 'needs' => fn ($q) => $q->latest()]);
+        $this->animal = $animal->load([
+            'shelter',
+            'needs' => fn ($q) => $q->latest(),
+            'recoveryUpdates' => fn ($q) => $q->with('images')->latest(),
+        ]);
     }
 
     public function render(): View

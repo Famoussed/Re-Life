@@ -24,6 +24,7 @@
         ['admin.dashboard', 'Genel Bakış'],
         ['admin.animals', 'Hayvanlar'],
         ['admin.needs', 'İhtiyaçlar'],
+        ['admin.recovery-updates', 'İyileşme Güncellemeleri'],
         ['admin.donations', 'Bağışlar'],
         ['admin.donors', 'Bağışçılar'],
         ['admin.announcements', 'Duyurular'],

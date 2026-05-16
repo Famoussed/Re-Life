@@ -12,11 +12,17 @@
     <div class="space-y-3 mt-5">
         @forelse($notifications as $n)
             @php($data = $n->data)
+            @php($isRecovery = ($data['type'] ?? null) === 'recovery_update')
             <div wire:key="n-{{ $n->id }}"
                  class="paper-card rounded-3xl p-4 shadow-note border border-cream-300/50 flex items-start gap-3
                  {{ $n->read_at ? 'opacity-70' : '' }}">
-                <div class="w-9 h-9 rounded-full bg-sun-100 border border-sun-200 flex items-center justify-center shrink-0">
-                    <svg class="w-4 h-4 text-clay-500"><use href="#heart" fill="currentColor"/></svg>
+                <div class="w-9 h-9 rounded-full flex items-center justify-center shrink-0
+                    {{ $isRecovery ? 'bg-sage-100 border border-sage-200' : 'bg-sun-100 border border-sun-200' }}">
+                    @if($isRecovery)
+                        <svg class="w-4 h-4 text-sage-600"><use href="#leaf" fill="currentColor"/></svg>
+                    @else
+                        <svg class="w-4 h-4 text-clay-500"><use href="#heart" fill="currentColor"/></svg>
+                    @endif
                 </div>
                 <div class="flex-1 min-w-0">
                     <div class="font-modern text-[17px] text-ink-900">{{ $data['title'] ?? 'Bildirim' }}</div>
