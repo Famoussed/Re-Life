@@ -35,7 +35,7 @@
     <aside class="w-60 shrink-0 hidden lg:block">
         <a class="flex items-center gap-3 mb-7" href="{{ route('home') }}">
             <svg class="w-9 h-9"><use href="#brand-mark"/></svg>
-            <span class="font-serif text-xl text-ink-900">Re·Life</span>
+            <span class="font-modern text-xl text-ink-900">Re·Life</span>
         </a>
         <div class="text-[11px] uppercase tracking-[0.16em] text-clay-500 mb-3 px-3">
             {{ $isSuper ? 'Platform Yönetimi' : 'Barınak Paneli' }}

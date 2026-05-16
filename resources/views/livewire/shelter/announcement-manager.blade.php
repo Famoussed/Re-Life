@@ -1,7 +1,7 @@
 <div>
     <header class="flex items-center justify-between gap-4 mb-7">
         <div>
-            <h1 class="font-serif text-[34px] leading-tight text-ink-900">Duyurular</h1>
+            <h1 class="font-modern text-[34px] leading-tight text-ink-900">Duyurular</h1>
             <p class="text-[14px] text-ink-700/65 mt-1">Bağışçılarına haberlerini ulaştır.</p>
         </div>
         @unless($showForm)
@@ -21,7 +21,7 @@
     {{-- INLINE FORM --}}
     @if($showForm)
         <form wire:submit="save" class="paper-card rounded-3xl border border-cream-300/60 p-6 shadow-card mb-7">
-            <h2 class="font-serif text-[22px] text-ink-900 mb-4">Yeni Duyuru</h2>
+            <h2 class="font-modern text-[22px] text-ink-900 mb-4">Yeni Duyuru</h2>
             <div class="space-y-4">
                 <div>
                     <label class="block text-[13px] text-ink-700 mb-1">Başlık</label>
@@ -52,14 +52,14 @@
     {{-- LİSTE --}}
     @if($announcements->isEmpty())
         <div class="paper-card rounded-4xl border border-cream-300/50 p-12 text-center">
-            <div class="font-hand text-[24px] text-clay-500">henüz duyuru yayınlanmamış</div>
+            <div class="font-modern text-[24px] text-clay-500">henüz duyuru yayınlanmamış</div>
         </div>
     @else
         <div class="space-y-4">
             @foreach($announcements as $announcement)
                 <article class="paper-note rounded-3xl p-5 shadow-note" wire:key="announcement-{{ $announcement->id }}">
                     <div class="flex items-start justify-between gap-4">
-                        <h3 class="font-serif text-[19px] text-ink-900">{{ $announcement->title }}</h3>
+                        <h3 class="font-modern text-[19px] text-ink-900">{{ $announcement->title }}</h3>
                         <span class="text-[12px] text-ink-700/55 shrink-0">{{ $announcement->created_at->format('d.m.Y H:i') }}</span>
                     </div>
                     <p class="text-[14px] text-ink-700/80 mt-2 leading-[1.6] whitespace-pre-line">{{ $announcement->body }}</p>

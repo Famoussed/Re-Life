@@ -1,6 +1,6 @@
 <div class="max-w-[1000px]">
     <div class="text-[12px] uppercase tracking-[0.16em] text-clay-500 font-medium">Platform Yönetimi</div>
-    <h1 class="font-serif text-[40px] sm:text-[48px] leading-[0.95] text-ink-900 mt-1">Barınak Onayları</h1>
+    <h1 class="font-modern text-[40px] sm:text-[48px] leading-[0.95] text-ink-900 mt-1">Barınak Onayları</h1>
     <p class="text-[15px] text-ink-700/75 mt-2 max-w-[560px]">
         Kayıt başvurusu yapan ve onay bekleyen barınakları inceleyin.
     </p>
@@ -16,7 +16,7 @@
             <div class="paper-card rounded-4xl shadow-card border border-cream-300/50 p-5 sm:p-6">
                 <div class="flex flex-wrap items-start justify-between gap-4">
                     <div class="min-w-0">
-                        <div class="font-serif text-[22px] text-ink-900">{{ $shelter->name }}</div>
+                        <div class="font-modern text-[22px] text-ink-900">{{ $shelter->name }}</div>
                         <div class="text-[13px] text-ink-700/70 mt-0.5">{{ $shelter->city }}</div>
                     </div>
                     <div class="flex gap-2 shrink-0">
@@ -58,7 +58,7 @@
             </div>
         @empty
             <div class="paper-card rounded-4xl shadow-card border border-cream-300/50 p-12 text-center">
-                <div class="font-hand text-[26px] text-clay-500">onay bekleyen barınak yok 🌿</div>
+                <div class="font-modern text-[26px] text-clay-500">onay bekleyen barınak yok 🌿</div>
                 <p class="text-[14px] text-ink-700/65 mt-2">Tüm başvurular sonuçlandırılmış.</p>
             </div>
         @endforelse

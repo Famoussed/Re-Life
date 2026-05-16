@@ -100,7 +100,7 @@ new #[Layout('layouts.auth-split')] class extends Component
         <!-- Logo -->
         <a href="/" wire:navigate class="flex items-center gap-2 relative z-10 transition-transform hover:scale-105 duration-300">
             <svg class="w-8 h-8 text-sage-700"><use href="#brand-mark"/></svg>
-            <span class="font-serif text-2xl text-ink-900 tracking-tight">Re<span class="text-sun-400">·</span>Life</span>
+            <span class="font-modern text-2xl text-ink-900 tracking-tight">Re<span class="text-sun-400">·</span>Life</span>
         </a>
 
         <!-- Dekoratif ikon -->
@@ -112,8 +112,8 @@ new #[Layout('layouts.auth-split')] class extends Component
                 <span class="w-1.5 h-1.5 rounded-full bg-sage-500 animate-pulse"></span>
                 <span class="text-[11px] font-semibold text-sage-700 tracking-widest uppercase">Yeni Üyelik</span>
             </div>
-            <h1 class="font-serif text-[52px] leading-[1.05] text-ink-900 tracking-tight">
-                Bir dokunuşla <span class="italic font-hand text-[60px] text-clay-500">hayat</span>
+            <h1 class="font-modern text-[52px] leading-[1.05] text-ink-900 tracking-tight">
+                Bir dokunuşla <span class="italic font-modern text-[60px] text-clay-500">hayat</span>
                 <br>değişir.
             </h1>
             <p class="mt-6 text-[15px] text-ink-700/75 leading-relaxed max-w-sm">
@@ -123,15 +123,15 @@ new #[Layout('layouts.auth-split')] class extends Component
             <!-- İstatistik Chips -->
             <div class="flex flex-wrap gap-3 mt-8">
                 <div class="flex items-center gap-2 bg-white/80 border border-cream-200 rounded-2xl px-4 py-2.5 shadow-sm">
-                    <span class="text-[22px] font-serif text-sage-700">12</span>
+                    <span class="text-[22px] font-modern text-sage-700">12</span>
                     <span class="text-[11px] text-ink-700/60 leading-tight">aktif<br>barınak</span>
                 </div>
                 <div class="flex items-center gap-2 bg-white/80 border border-cream-200 rounded-2xl px-4 py-2.5 shadow-sm">
-                    <span class="text-[22px] font-serif text-clay-600">340+</span>
+                    <span class="text-[22px] font-modern text-clay-600">340+</span>
                     <span class="text-[11px] text-ink-700/60 leading-tight">iyileşen<br>can</span>
                 </div>
                 <div class="flex items-center gap-2 bg-white/80 border border-cream-200 rounded-2xl px-4 py-2.5 shadow-sm">
-                    <span class="text-[22px] font-serif text-[#a88d3e]">₺2.4M</span>
+                    <span class="text-[22px] font-modern text-[#a88d3e]">₺2.4M</span>
                     <span class="text-[11px] text-ink-700/60 leading-tight">toplam<br>destek</span>
                 </div>
             </div>
@@ -141,15 +141,15 @@ new #[Layout('layouts.auth-split')] class extends Component
         <div class="relative mt-12 h-56 z-10">
             <div class="absolute left-0 top-4 w-40 h-44 bg-[#f6f2e8] rounded-xl shadow border border-cream-200 p-2.5 transform -rotate-[6deg] transition-all duration-500 hover:-translate-y-3 hover:rotate-0 hover:shadow-xl hover:z-30 cursor-pointer">
                 <div class="w-full h-28 rounded-sm bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1591769225440-811ad7d62ca2?q=80&w=400&auto=format&fit=crop');"></div>
-                <div class="mt-2 text-center font-hand text-xs text-ink-700 tracking-widest uppercase">birlikte</div>
+                <div class="mt-2 text-center font-modern text-xs text-ink-700 tracking-widest uppercase">birlikte</div>
             </div>
             <div class="absolute left-32 top-0 w-44 h-48 bg-[#fcf5de] rounded-xl shadow-md border border-[#f3e6be] p-3 transform rotate-[3deg] z-20 transition-all duration-500 hover:-translate-y-3 hover:rotate-0 hover:shadow-2xl hover:z-40 cursor-pointer">
                 <div class="w-full h-28 rounded-sm bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1548199973-03cce0bbc87b?q=80&w=400&auto=format&fit=crop');"></div>
-                <div class="mt-2 text-center font-hand text-xs text-ink-800 tracking-widest uppercase">güçlüyüz</div>
+                <div class="mt-2 text-center font-modern text-xs text-ink-800 tracking-widest uppercase">güçlüyüz</div>
             </div>
             <div class="absolute left-[270px] top-8 w-40 h-44 bg-[#e9f0e6] rounded-xl shadow border border-[#d6e2d1] p-2.5 transform rotate-[7deg] transition-all duration-500 hover:-translate-y-3 hover:rotate-0 hover:shadow-xl hover:z-30 cursor-pointer">
                 <div class="w-full h-28 rounded-sm bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?q=80&w=400&auto=format&fit=crop');"></div>
-                <div class="mt-2 text-center font-hand text-xs text-ink-700 tracking-widest uppercase">umutla</div>
+                <div class="mt-2 text-center font-modern text-xs text-ink-700 tracking-widest uppercase">umutla</div>
             </div>
         </div>
 
@@ -167,7 +167,7 @@ new #[Layout('layouts.auth-split')] class extends Component
             <!-- Başlık -->
             <div class="mb-8">
                 <div class="text-[11px] font-semibold text-ink-900/40 tracking-[0.2em] uppercase mb-3">Yeni Hesap</div>
-                <h2 class="font-serif text-[38px] leading-[1.1] text-ink-900">Aramıza katıl.</h2>
+                <h2 class="font-modern text-[38px] leading-[1.1] text-ink-900">Aramıza katıl.</h2>
                 <p class="mt-2 text-[13.5px] text-ink-700/55 leading-relaxed">Rolünü seç ve bilgilerini gir — hayvanlara dokunan büyük bir ailenin parçası ol.</p>
             </div>
 

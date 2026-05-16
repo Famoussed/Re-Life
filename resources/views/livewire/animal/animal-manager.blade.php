@@ -1,7 +1,7 @@
 <div>
     <header class="flex items-center justify-between gap-4 mb-7">
         <div>
-            <h1 class="font-serif text-[34px] leading-tight text-ink-900">Hayvanlar</h1>
+            <h1 class="font-modern text-[34px] leading-tight text-ink-900">Hayvanlar</h1>
             <p class="text-[14px] text-ink-700/65 mt-1">Barınağındaki dostları ekle, düzenle ve yönet.</p>
         </div>
         @unless($showForm)
@@ -21,7 +21,7 @@
     {{-- INLINE FORM --}}
     @if($showForm)
         <form wire:submit="save" class="paper-card rounded-3xl border border-cream-300/60 p-6 shadow-card mb-7">
-            <h2 class="font-serif text-[22px] text-ink-900 mb-4">
+            <h2 class="font-modern text-[22px] text-ink-900 mb-4">
                 {{ $editingId ? 'Hayvanı Düzenle' : 'Yeni Hayvan' }}
             </h2>
             <div class="grid sm:grid-cols-2 gap-4">
@@ -93,7 +93,7 @@
     {{-- LİSTE --}}
     @if($animals->isEmpty())
         <div class="paper-card rounded-4xl border border-cream-300/50 p-12 text-center">
-            <div class="font-hand text-[24px] text-clay-500">henüz hayvan eklenmemiş</div>
+            <div class="font-modern text-[24px] text-clay-500">henüz hayvan eklenmemiş</div>
         </div>
     @else
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -104,7 +104,7 @@
                             class="w-20 h-20 rounded-2xl shrink-0" />
                         <div class="min-w-0 flex-1">
                             <div class="flex items-center gap-2">
-                                <h3 class="font-serif text-[18px] text-ink-900 truncate">{{ $animal->name }}</h3>
+                                <h3 class="font-modern text-[18px] text-ink-900 truncate">{{ $animal->name }}</h3>
                                 @if($animal->is_active)
                                     <span class="text-[11px] rounded-full bg-sage-100 text-sage-700 px-2 py-0.5">Aktif</span>
                                 @else

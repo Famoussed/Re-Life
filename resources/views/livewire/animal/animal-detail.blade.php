@@ -53,8 +53,8 @@
                         <div class="text-[11px] uppercase tracking-[0.16em] text-sage-700 font-medium">
                             {{ $animal->species->label() }} · {{ $animal->gender->label() }}
                         </div>
-                        <h1 class="font-serif text-[52px] leading-[0.9] text-ink-900 mt-1">{{ $animal->name }}</h1>
-                        <div class="font-hand text-[23px] text-clay-500 mt-1">{{ $animal->age_estimate }}</div>
+                        <h1 class="font-modern text-[52px] leading-[0.9] text-ink-900 mt-1">{{ $animal->name }}</h1>
+                        <div class="font-modern text-[23px] text-clay-500 mt-1">{{ $animal->age_estimate }}</div>
                     </div>
                     <a href="{{ route('shelters.show', $animal->shelter) }}"
                        class="rounded-full bg-sage-100 text-sage-700 px-4 py-2 text-[13px] border border-sage-200 hover:bg-sage-200">
@@ -64,7 +64,7 @@
 
                 <div class="mt-6 pt-5 border-t border-dashed border-clay-200">
                     <div class="text-[11px] uppercase tracking-[0.16em] text-clay-500 mb-1.5">Hikâyesi</div>
-                    <p class="font-serif text-[18px] text-ink-900/90 leading-[1.6]">{{ $animal->story }}</p>
+                    <p class="font-modern text-[18px] text-ink-900/90 leading-[1.6]">{{ $animal->story }}</p>
                 </div>
 
                 <div class="mt-5">
@@ -77,14 +77,14 @@
         {{-- SAĞ — ihtiyaçlar --}}
         <div class="lg:col-span-5 space-y-5">
             <div class="paper-card rounded-4xl p-6 sm:p-7 shadow-card border border-cream-300/50">
-                <h2 class="font-serif text-[28px] text-ink-900 leading-tight">İyileşme yolculuğu</h2>
+                <h2 class="font-modern text-[28px] text-ink-900 leading-tight">İyileşme yolculuğu</h2>
                 <p class="text-[13px] text-ink-700/60 mt-1">Her ihtiyaç, ona atılan bir adım.</p>
 
                 <div class="space-y-4 mt-5">
                     @forelse($activeNeeds as $need)
                         <div class="paper-note rounded-2xl p-4 shadow-note">
                             <div class="flex items-baseline justify-between gap-3">
-                                <div class="font-serif text-[17px] text-ink-900">{{ $need->title }}</div>
+                                <div class="font-modern text-[17px] text-ink-900">{{ $need->title }}</div>
                                 <span class="rounded-full bg-cream-100 text-clay-500 px-2.5 py-0.5 text-[11px] border border-cream-300/60 whitespace-nowrap">{{ $need->type->label() }}</span>
                             </div>
                             @if($need->description)
@@ -123,7 +123,7 @@
                     @foreach($completedNeeds as $need)
                         <div class="rounded-2xl bg-sage-50 border border-sage-200 p-4">
                             <div class="flex items-center justify-between">
-                                <span class="font-serif text-[15px] text-ink-900">{{ $need->title }}</span>
+                                <span class="font-modern text-[15px] text-ink-900">{{ $need->title }}</span>
                                 <span class="text-[12px] text-sage-700 font-medium">Tamamlandı ✓</span>
                             </div>
                         </div>

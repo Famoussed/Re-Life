@@ -35,16 +35,16 @@ new #[Layout('layouts.auth-split')] class extends Component
         <!-- Logo -->
         <a href="/" wire:navigate class="flex items-center gap-2 relative z-10 transition-transform hover:scale-105 duration-300">
             <svg class="w-8 h-8 text-sage-700"><use href="#brand-mark"/></svg>
-            <span class="font-serif text-2xl text-ink-900 tracking-tight">Re<span class="text-sun-400">·</span>Life</span>
+            <span class="font-modern text-2xl text-ink-900 tracking-tight">Re<span class="text-sun-400">·</span>Life</span>
         </a>
         
         <!-- Pati İzi Sağ Üstte -->
         <svg class="absolute top-12 right-12 w-24 h-24 text-cream-200/60 rotate-[15deg] transition-transform hover:rotate-45 duration-700"><use href="#brand-mark"/></svg>
 
         <div class="max-w-md relative z-10 mt-12 animate-fade-in-up">
-            <h1 class="font-serif text-[56px] leading-[1.05] text-ink-900 tracking-tight">
-                Sevgiyle <span class="italic font-hand text-[64px] text-clay-600">başlayan</span>
-                <br>küçük bir <span class="italic font-hand text-[64px] text-sage-600">kapı.</span>
+            <h1 class="font-modern text-[56px] leading-[1.05] text-ink-900 tracking-tight">
+                Sevgiyle <span class="italic font-modern text-[64px] text-clay-600">başlayan</span>
+                <br>küçük bir <span class="italic font-modern text-[64px] text-sage-600">kapı.</span>
             </h1>
             <p class="mt-8 text-[15px] text-ink-700/80 leading-relaxed max-w-sm">
                 Hayvan sahibi olmak için onları evinize almanız gerekmiyor. Burada bir dostun hikâyesini takip etmenin ve hayatına dokunmanın en sıcak yolu var.
@@ -53,15 +53,15 @@ new #[Layout('layouts.auth-split')] class extends Component
             <!-- İstatistik Chips -->
             <div class="flex flex-wrap gap-3 mt-8">
                 <div class="flex items-center gap-2 bg-white/80 border border-cream-200 rounded-2xl px-4 py-2.5 shadow-sm">
-                    <span class="text-[22px] font-serif text-sage-700">12</span>
+                    <span class="text-[22px] font-modern text-sage-700">12</span>
                     <span class="text-[11px] text-ink-700/60 leading-tight">aktif<br>barınak</span>
                 </div>
                 <div class="flex items-center gap-2 bg-white/80 border border-cream-200 rounded-2xl px-4 py-2.5 shadow-sm">
-                    <span class="text-[22px] font-serif text-clay-600">340+</span>
+                    <span class="text-[22px] font-modern text-clay-600">340+</span>
                     <span class="text-[11px] text-ink-700/60 leading-tight">iyileşen<br>can</span>
                 </div>
                 <div class="flex items-center gap-2 bg-white/80 border border-cream-200 rounded-2xl px-4 py-2.5 shadow-sm">
-                    <span class="text-[22px] font-serif text-[#a88d3e]">₺2.4M</span>
+                    <span class="text-[22px] font-modern text-[#a88d3e]">₺2.4M</span>
                     <span class="text-[11px] text-ink-700/60 leading-tight">toplam<br>destek</span>
                 </div>
             </div>
@@ -72,7 +72,7 @@ new #[Layout('layouts.auth-split')] class extends Component
             <!-- 1. Kart -->
             <div class="absolute left-0 top-4 w-44 h-48 bg-[#f6f2e8] rounded-lg shadow-sm border border-cream-200 p-2.5 transform -rotate-[5deg] transition-all duration-500 hover:-translate-y-4 hover:rotate-0 hover:shadow-xl hover:z-30 cursor-pointer">
                 <div class="w-full h-32 bg-[#e6dfcc] rounded-[4px] overflow-hidden relative group-hover:bg-[#d8cfb8] transition-colors bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1543466835-00a7907e9de1?q=80&w=400&auto=format&fit=crop');"></div>
-                <div class="mt-3 text-center font-hand text-sm text-ink-700 tracking-widest uppercase">poyraz</div>
+                <div class="mt-3 text-center font-modern text-sm text-ink-700 tracking-widest uppercase">poyraz</div>
             </div>
             
             <!-- 2. Kart (Ortadaki) -->
@@ -80,7 +80,7 @@ new #[Layout('layouts.auth-split')] class extends Component
                 <div class="w-full h-20 bg-[#f4e6bb] rounded-[4px] flex items-center justify-center text-[10px] tracking-widest text-[#a88d3e] uppercase bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=400&auto=format&fit=crop');">
                     <span class="bg-black/30 text-white px-2 py-0.5 rounded backdrop-blur-sm">LEYLA</span>
                 </div>
-                <div class="mt-4 font-hand text-[15px] text-ink-800 leading-[1.3]">
+                <div class="mt-4 font-modern text-[15px] text-ink-800 leading-[1.3]">
                     "bugün ilk kez bana baktı
                     — bütün dünya durdu
                     sandım."
@@ -93,7 +93,7 @@ new #[Layout('layouts.auth-split')] class extends Component
                 <div class="w-full h-32 bg-[#c9d8c3] rounded-[4px] flex items-center justify-center text-[10px] tracking-widest text-[#6c8663] uppercase transition-colors group-hover:bg-[#b8c9b1] bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1517849845537-4d257902454a?q=80&w=400&auto=format&fit=crop');">
                     <span class="bg-black/30 text-white px-2 py-0.5 rounded backdrop-blur-sm">MİLO</span>
                 </div>
-                <div class="mt-3 text-center font-hand text-sm text-ink-700 tracking-widest uppercase">milo</div>
+                <div class="mt-3 text-center font-modern text-sm text-ink-700 tracking-widest uppercase">milo</div>
             </div>
         </div>
 
@@ -111,7 +111,7 @@ new #[Layout('layouts.auth-split')] class extends Component
         <div class="w-full max-w-[420px] animate-fade-in-up">
             <div class="mb-8">
                 <div class="text-[11px] font-semibold text-ink-900/40 tracking-[0.2em] uppercase mb-2">Hoş Geldin</div>
-                <h2 class="font-serif text-[42px] leading-[1.1] text-ink-900">İçeri gel, biri seni bekliyor.</h2>
+                <h2 class="font-modern text-[42px] leading-[1.1] text-ink-900">İçeri gel, biri seni bekliyor.</h2>
             </div>
 
             <x-auth-session-status class="mb-4" :status="session('status')" />

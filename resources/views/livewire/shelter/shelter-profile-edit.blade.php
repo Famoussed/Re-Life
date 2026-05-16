@@ -1,6 +1,6 @@
 <div>
     <header class="mb-7">
-        <h1 class="font-serif text-[34px] leading-tight text-ink-900">Barınak Profili</h1>
+        <h1 class="font-modern text-[34px] leading-tight text-ink-900">Barınak Profili</h1>
         <p class="text-[14px] text-ink-700/65 mt-1">Barınağının iletişim ve konum bilgilerini güncel tut.</p>
     </header>
 

@@ -1,6 +1,6 @@
 <div class="max-w-[1000px]">
     <div class="text-[12px] uppercase tracking-[0.16em] text-clay-500 font-medium">Platform Yönetimi</div>
-    <h1 class="font-serif text-[40px] sm:text-[48px] leading-[0.95] text-ink-900 mt-1">Platform Genel Bakışı</h1>
+    <h1 class="font-modern text-[40px] sm:text-[48px] leading-[0.95] text-ink-900 mt-1">Platform Genel Bakışı</h1>
     <p class="text-[15px] text-ink-700/75 mt-2 max-w-[560px]">
         Tüm barınakların, bağışçıların ve bağışların kuş bakışı özeti.
     </p>
@@ -14,7 +14,7 @@
     @if($pendingShelters > 0)
         <div class="paper-note rounded-2xl shadow-note border border-sun-200 mt-5 px-5 py-4 flex items-center justify-between gap-4">
             <div class="text-[14px] text-ink-800">
-                <span class="font-hand text-[22px] text-clay-500">{{ $pendingShelters }}</span>
+                <span class="font-modern text-[22px] text-clay-500">{{ $pendingShelters }}</span>
                 barınak onayınızı bekliyor.
             </div>
             <a href="{{ route('superadmin.approvals') }}"
@@ -43,17 +43,17 @@
                     <svg class="w-4 h-4"><use href="{{ $icon }}" fill="currentColor"/></svg>
                     <span class="text-[12px] uppercase tracking-[0.12em] font-medium">{{ $label }}</span>
                 </div>
-                <div class="font-serif text-[30px] text-ink-900 mt-2 leading-none">{{ $value }}</div>
+                <div class="font-modern text-[30px] text-ink-900 mt-2 leading-none">{{ $value }}</div>
             </div>
         @endforeach
     </div>
 
     {{-- En çok bağış toplayan barınaklar --}}
-    <h2 class="font-serif text-[26px] text-ink-900 mt-10">En Çok Bağış Toplayan Barınaklar</h2>
+    <h2 class="font-modern text-[26px] text-ink-900 mt-10">En Çok Bağış Toplayan Barınaklar</h2>
     <div class="paper-card rounded-4xl shadow-card border border-cream-300/50 mt-4 overflow-hidden">
         @forelse($topShelters as $i => $row)
             <div class="flex items-center gap-4 px-5 sm:px-6 py-3.5 {{ $i > 0 ? 'border-t border-dashed border-clay-200' : '' }}">
-                <div class="w-9 text-center font-serif text-[22px] {{ $i < 3 ? 'text-clay-500' : 'text-ink-700/40' }}">
+                <div class="w-9 text-center font-modern text-[22px] {{ $i < 3 ? 'text-clay-500' : 'text-ink-700/40' }}">
                     {{ $i + 1 }}
                 </div>
                 <div class="flex-1 min-w-0">
@@ -65,10 +65,10 @@
                         {{ $row['shelter']->city }} · {{ $row['count'] }} bağış
                     </div>
                 </div>
-                <div class="font-serif text-[20px] text-ink-900">₺{{ number_format($row['total'], 0, ',', '.') }}</div>
+                <div class="font-modern text-[20px] text-ink-900">₺{{ number_format($row['total'], 0, ',', '.') }}</div>
             </div>
         @empty
-            <div class="p-12 text-center font-hand text-[24px] text-clay-500">
+            <div class="p-12 text-center font-modern text-[24px] text-clay-500">
                 henüz hiç bağış kaydı yok 🌱
             </div>
         @endforelse

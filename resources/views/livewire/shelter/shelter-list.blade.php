@@ -1,6 +1,6 @@
 <div class="max-w-[1080px]">
     <div class="text-[12px] uppercase tracking-[0.16em] text-clay-500 font-medium">Platform Yönetimi</div>
-    <h1 class="font-serif text-[40px] sm:text-[48px] leading-[0.95] text-ink-900 mt-1">Tüm Barınaklar</h1>
+    <h1 class="font-modern text-[40px] sm:text-[48px] leading-[0.95] text-ink-900 mt-1">Tüm Barınaklar</h1>
     <p class="text-[15px] text-ink-700/75 mt-2 max-w-[560px]">
         Platformdaki bütün barınakların durumunu görüntüleyin ve yönetin.
     </p>
@@ -76,7 +76,7 @@
                 </div>
             </div>
         @empty
-            <div class="p-12 text-center font-hand text-[24px] text-clay-500">
+            <div class="p-12 text-center font-modern text-[24px] text-clay-500">
                 bu kritere uygun barınak yok 🌱
             </div>
         @endforelse

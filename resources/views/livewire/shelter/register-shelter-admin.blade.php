@@ -1,5 +1,5 @@
 <div>
-    <h1 class="font-serif text-[32px] text-ink-900 leading-tight">Barınağını kaydet</h1>
+    <h1 class="font-modern text-[32px] text-ink-900 leading-tight">Barınağını kaydet</h1>
     <p class="text-[13.5px] text-ink-700/70 mt-1">
         Başvurun platform yöneticisi tarafından incelenip onaylanacak. Onay sonrası panele giriş yapabilirsin.
     </p>

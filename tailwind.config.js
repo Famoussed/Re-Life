@@ -24,6 +24,7 @@ export default {
                 serif: ['Newsreader', 'Georgia', 'serif'],
                 sans: ['"DM Sans"', ...defaultTheme.fontFamily.sans],
                 hand: ['Caveat', 'cursive'],
+                modern: ['Poppins', ...defaultTheme.fontFamily.sans],
             },
             borderRadius: { '4xl': '2rem', '5xl': '2.5rem' },
             boxShadow: {

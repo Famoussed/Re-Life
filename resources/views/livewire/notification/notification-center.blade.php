@@ -2,7 +2,7 @@
     <div class="flex items-baseline justify-between">
         <div>
             <div class="text-[12px] uppercase tracking-[0.16em] text-clay-500 font-medium">Senin için</div>
-            <h1 class="font-serif text-[42px] text-ink-900 leading-tight mt-1">Bildirimler</h1>
+            <h1 class="font-modern text-[42px] text-ink-900 leading-tight mt-1">Bildirimler</h1>
         </div>
         @if($notifications->whereNull('read_at')->isNotEmpty())
             <button wire:click="markAllAsRead" class="text-[13px] text-sage-700 hover:text-sage-600 underline underline-offset-2">tümünü okundu işaretle</button>
@@ -19,7 +19,7 @@
                     <svg class="w-4 h-4 text-clay-500"><use href="#heart" fill="currentColor"/></svg>
                 </div>
                 <div class="flex-1 min-w-0">
-                    <div class="font-serif text-[17px] text-ink-900">{{ $data['title'] ?? 'Bildirim' }}</div>
+                    <div class="font-modern text-[17px] text-ink-900">{{ $data['title'] ?? 'Bildirim' }}</div>
                     <p class="text-[13.5px] text-ink-700/75 mt-0.5 leading-snug">{{ $data['message'] ?? '' }}</p>
                     <div class="flex items-center gap-3 mt-2">
                         @if(!empty($data['url']))
@@ -33,7 +33,7 @@
                 </div>
             </div>
         @empty
-            <div class="paper-card rounded-4xl border border-cream-300/50 p-12 text-center font-hand text-[24px] text-clay-500">
+            <div class="paper-card rounded-4xl border border-cream-300/50 p-12 text-center font-modern text-[24px] text-clay-500">
                 henüz bildirimin yok 🌿
             </div>
         @endforelse

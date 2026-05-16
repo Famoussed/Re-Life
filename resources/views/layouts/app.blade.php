@@ -16,7 +16,7 @@
     <div class="max-w-[1320px] mx-auto px-5 sm:px-8 pt-6 pb-4 flex items-center gap-6 flex-wrap">
         <a class="flex items-center gap-3" href="{{ route('home') }}">
             <svg class="w-10 h-10"><use href="#brand-mark"/></svg>
-            <span class="font-serif text-2xl text-ink-900 tracking-tight">Re<span class="text-sun-400">·</span>Life</span>
+            <span class="font-modern text-2xl text-ink-900 tracking-tight">Re<span class="text-sun-400">·</span>Life</span>
         </a>
         <nav class="hidden md:flex items-center gap-6 text-[14.5px] text-ink-700/80 ml-2">
             <a class="hover:text-ink-900" href="{{ route('home') }}">Dostlarımız</a>
@@ -59,13 +59,13 @@
         <div class="sm:col-span-4">
             <div class="flex items-center gap-3">
                 <svg class="w-9 h-9"><use href="#brand-mark"/></svg>
-                <span class="font-serif text-2xl text-ink-900">Re·Life</span>
+                <span class="font-modern text-2xl text-ink-900">Re·Life</span>
             </div>
             <p class="mt-3 text-[14px] text-ink-700/70 max-w-[420px] leading-[1.55]">
                 Bir iyileştirici dostuz — operatör değil. Her dostun yolculuğunu birlikte yürürüz;
                 sayılar arkada kalır, isimler ön sırada.
             </p>
-            <div class="font-hand text-[22px] text-clay-500 mt-3">— sevgiyle</div>
+            <div class="font-modern text-[22px] text-clay-500 mt-3">— sevgiyle</div>
         </div>
         <div class="sm:col-span-2">
             <div class="text-[11px] uppercase tracking-[0.16em] text-clay-500 mb-3">Dostlar</div>
@@ -96,7 +96,7 @@
     <div class="border-t border-cream-300/50">
         <div class="max-w-[1320px] mx-auto px-5 sm:px-8 py-4 flex items-center justify-between text-[12px] text-ink-700/55">
             <span>© {{ date('Y') }} Re·Life — sıcak bir kucak için.</span>
-            <span class="font-hand text-[18px] text-clay-500">tüm dostlara teşekkürler 🌿</span>
+            <span class="font-modern text-[18px] text-clay-500">tüm dostlara teşekkürler 🌿</span>
         </div>
     </div>
 </footer>

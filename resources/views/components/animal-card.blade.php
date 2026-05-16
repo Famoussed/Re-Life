@@ -62,7 +62,7 @@
     <div class="p-5">
         {{-- İsim + Yaş --}}
         <div class="flex items-baseline justify-between gap-3">
-            <h3 class="font-serif text-[30px] leading-[1] text-ink-900 tracking-tight">{{ $animal->name }}</h3>
+            <h3 class="font-modern text-[30px] leading-[1] text-ink-900 tracking-tight">{{ $animal->name }}</h3>
             <span class="text-[11px] text-ink-700/50 font-medium tracking-wide uppercase">{{ $animal->age_estimate }}</span>
         </div>
 

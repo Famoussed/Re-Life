@@ -1,7 +1,7 @@
 <div>
     <header class="flex items-center justify-between gap-4 mb-7">
         <div>
-            <h1 class="font-serif text-[34px] leading-tight text-ink-900">İhtiyaçlar</h1>
+            <h1 class="font-modern text-[34px] leading-tight text-ink-900">İhtiyaçlar</h1>
             <p class="text-[14px] text-ink-700/65 mt-1">Dostlarının mama, aşı ve tedavi ihtiyaçlarını yönet.</p>
         </div>
         @unless($showForm)
@@ -21,7 +21,7 @@
     {{-- INLINE FORM --}}
     @if($showForm)
         <form wire:submit="save" class="paper-card rounded-3xl border border-cream-300/60 p-6 shadow-card mb-7">
-            <h2 class="font-serif text-[22px] text-ink-900 mb-4">
+            <h2 class="font-modern text-[22px] text-ink-900 mb-4">
                 {{ $editingId ? 'İhtiyacı Düzenle' : 'Yeni İhtiyaç' }}
             </h2>
             <div class="grid sm:grid-cols-2 gap-4">
@@ -82,7 +82,7 @@
     {{-- LİSTE --}}
     @if($needs->isEmpty())
         <div class="paper-card rounded-4xl border border-cream-300/50 p-12 text-center">
-            <div class="font-hand text-[24px] text-clay-500">henüz ihtiyaç eklenmemiş</div>
+            <div class="font-modern text-[24px] text-clay-500">henüz ihtiyaç eklenmemiş</div>
         </div>
     @else
         <div class="space-y-4">
@@ -91,7 +91,7 @@
                     <div class="flex flex-wrap items-start justify-between gap-4">
                         <div class="min-w-0">
                             <div class="flex items-center gap-2 flex-wrap">
-                                <h3 class="font-serif text-[18px] text-ink-900">{{ $need->title }}</h3>
+                                <h3 class="font-modern text-[18px] text-ink-900">{{ $need->title }}</h3>
                                 <span class="text-[11px] rounded-full bg-cream-200 text-ink-700/70 px-2 py-0.5">{{ $need->type->label() }}</span>
                                 @if($need->status === \App\Enums\Animal\NeedStatus::Active)
                                     <span class="text-[11px] rounded-full bg-sage-100 text-sage-700 px-2 py-0.5">Aktif</span>

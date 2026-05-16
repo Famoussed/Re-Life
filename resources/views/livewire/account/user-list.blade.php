@@ -1,6 +1,6 @@
 <div class="max-w-[1080px]">
     <div class="text-[12px] uppercase tracking-[0.16em] text-clay-500 font-medium">Platform Yönetimi</div>
-    <h1 class="font-serif text-[40px] sm:text-[48px] leading-[0.95] text-ink-900 mt-1">Kullanıcılar</h1>
+    <h1 class="font-modern text-[40px] sm:text-[48px] leading-[0.95] text-ink-900 mt-1">Kullanıcılar</h1>
     <p class="text-[15px] text-ink-700/75 mt-2 max-w-[560px]">
         Platformdaki tüm kullanıcıları görüntüleyin ve gerektiğinde erişimlerini yönetin.
     </p>
@@ -21,7 +21,7 @@
     <div class="paper-card rounded-4xl shadow-card border border-cream-300/50 mt-5 overflow-hidden">
         @forelse($users as $i => $user)
             <div class="flex flex-wrap items-center gap-4 px-5 sm:px-6 py-4 {{ $i > 0 ? 'border-t border-dashed border-clay-200' : '' }}">
-                <div class="w-10 h-10 rounded-full bg-sage-200 flex items-center justify-center font-serif text-[16px] text-sage-700 shrink-0">
+                <div class="w-10 h-10 rounded-full bg-sage-200 flex items-center justify-center font-modern text-[16px] text-sage-700 shrink-0">
                     {{ mb_substr($user->name, 0, 1) }}
                 </div>
                 <div class="flex-1 min-w-[160px]">
@@ -50,7 +50,7 @@
                 </div>
                 <div class="w-32 text-right">
                     @if($user->id === $currentUserId)
-                        <span class="text-[12px] font-hand text-clay-500">bu sizsiniz</span>
+                        <span class="text-[12px] font-modern text-clay-500">bu sizsiniz</span>
                     @elseif($user->is_banned)
                         <button wire:click="unban({{ $user->id }})"
                                 wire:confirm="“{{ $user->name }}” kullanıcısının banını kaldırmak istediğinize emin misiniz?"
@@ -67,7 +67,7 @@
                 </div>
             </div>
         @empty
-            <div class="p-12 text-center font-hand text-[24px] text-clay-500">
+            <div class="p-12 text-center font-modern text-[24px] text-clay-500">
                 bu aramayla eşleşen kullanıcı yok 🌱
             </div>
         @endforelse

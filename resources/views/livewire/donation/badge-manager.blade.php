@@ -1,6 +1,6 @@
 <div class="max-w-[820px]">
     <div class="text-[12px] uppercase tracking-[0.16em] text-clay-500 font-medium">Platform Yönetimi</div>
-    <h1 class="font-serif text-[40px] sm:text-[48px] leading-[0.95] text-ink-900 mt-1">Rozetler</h1>
+    <h1 class="font-modern text-[40px] sm:text-[48px] leading-[0.95] text-ink-900 mt-1">Rozetler</h1>
     <p class="text-[15px] text-ink-700/75 mt-2 max-w-[560px]">
         Rozet seviyeleri, bağışçıların toplam bağışına göre kazandığı ödüllerdir.
     </p>
@@ -12,7 +12,7 @@
     @endif
 
     <div class="paper-note rounded-2xl shadow-note border border-sun-200 mt-5 px-5 py-4 text-[13.5px] text-ink-800">
-        <span class="font-hand text-[18px] text-clay-500">Not:</span>
+        <span class="font-modern text-[18px] text-clay-500">Not:</span>
         Her rozetin <strong>minimum tutarı</strong>, bir bağışçının o seviyeye ulaşmak için
         toplamda bağışlaması gereken eşiği belirler. Seviyeler küçükten büyüğe doğru sıralıdır.
     </div>
@@ -27,7 +27,7 @@
 
             @forelse($badgeModels as $i => $badge)
                 <div class="flex flex-wrap items-center gap-4 px-5 sm:px-6 py-4 {{ $i > 0 ? 'border-t border-dashed border-clay-200' : '' }}">
-                    <div class="w-16 font-serif text-[24px] text-clay-500">{{ $badge->level }}</div>
+                    <div class="w-16 font-modern text-[24px] text-clay-500">{{ $badge->level }}</div>
                     <div class="flex-1 min-w-[180px]">
                         <input type="text" wire:model="badges.{{ $badge->id }}.name"
                                class="w-full rounded-2xl border border-cream-300/70 bg-cream-50 px-4 py-2.5 text-[14px] text-ink-900 focus:outline-none focus:border-sage-400">
@@ -44,7 +44,7 @@
                     </div>
                 </div>
             @empty
-                <div class="p-12 text-center font-hand text-[24px] text-clay-500">
+                <div class="p-12 text-center font-modern text-[24px] text-clay-500">
                     henüz rozet tanımı yok 🌱
                 </div>
             @endforelse

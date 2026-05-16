@@ -1,6 +1,6 @@
 <div>
     <header class="mb-7">
-        <h1 class="font-serif text-[34px] leading-tight text-ink-900">Bağışlar</h1>
+        <h1 class="font-modern text-[34px] leading-tight text-ink-900">Bağışlar</h1>
         <p class="text-[14px] text-ink-700/65 mt-1">Barınağına ulaşan tüm iyilikler.</p>
     </header>
 
@@ -8,11 +8,11 @@
     <div class="grid sm:grid-cols-2 gap-4 mb-6">
         <div class="paper-note rounded-3xl p-5 shadow-note">
             <div class="text-[11px] uppercase tracking-[0.14em] text-clay-500">Toplam Bağış</div>
-            <div class="mt-2 font-serif text-[28px] text-ink-900">{{ number_format($total, 2, ',', '.') }} ₺</div>
+            <div class="mt-2 font-modern text-[28px] text-ink-900">{{ number_format($total, 2, ',', '.') }} ₺</div>
         </div>
         <div class="paper-note rounded-3xl p-5 shadow-note">
             <div class="text-[11px] uppercase tracking-[0.14em] text-clay-500">Bağış Sayısı</div>
-            <div class="mt-2 font-serif text-[28px] text-ink-900">{{ $count }}</div>
+            <div class="mt-2 font-modern text-[28px] text-ink-900">{{ $count }}</div>
         </div>
     </div>
 
@@ -33,7 +33,7 @@
     {{-- TABLO --}}
     @if($donations->isEmpty())
         <div class="paper-card rounded-4xl border border-cream-300/50 p-12 text-center">
-            <div class="font-hand text-[24px] text-clay-500">bu dönemde bağış bulunamadı</div>
+            <div class="font-modern text-[24px] text-clay-500">bu dönemde bağış bulunamadı</div>
         </div>
     @else
         <div class="paper-card rounded-3xl border border-cream-300/60 shadow-card overflow-hidden">
@@ -55,7 +55,7 @@
                             <td class="px-5 py-3 text-ink-700/75">
                                 {{ $donation->animal?->name ?? 'Barınak geneli' }}
                             </td>
-                            <td class="px-5 py-3 text-right font-serif text-[15px] text-sage-700">
+                            <td class="px-5 py-3 text-right font-modern text-[15px] text-sage-700">
                                 {{ number_format((float) $donation->amount, 2, ',', '.') }} ₺
                             </td>
                             <td class="px-5 py-3 text-right text-ink-700/60">
