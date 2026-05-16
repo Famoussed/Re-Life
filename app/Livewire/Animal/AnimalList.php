@@ -61,8 +61,25 @@ class AnimalList extends Component
             ->unique()
             ->values();
 
+        $animals = $query->get();
+
+        if ($this->species === '') {
+            $animals = $animals->sortBy(function ($animal) {
+                if ($animal->activeNeeds->isEmpty()) {
+                    return 4; // Aktif ihtiyacı olmayanlar en sona
+                }
+
+                // Enum olduğu için 'type.value' kullanarak string değerleri çekiyoruz
+                $needs = $animal->activeNeeds->pluck('type.value');
+                
+                if ($needs->contains('illness')) return 1;
+                if ($needs->contains('vaccine')) return 2;
+                return 3; // Mama (food) veya diğer ihtiyaçlar
+            })->values();
+        }
+
         return view('livewire.animal.animal-list', [
-            'animals' => $query->get(),
+            'animals' => $animals,
             'cities' => $cities,
             'totalActive' => Animal::where('is_active', true)->count(),
         ]);
