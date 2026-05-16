@@ -8,13 +8,15 @@ use App\Models\Account\User;
 use App\Models\Animal\Animal;
 use App\Models\Animal\Need;
 use App\Models\Shelter\Shelter;
+use Database\Factories\DonationFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Donation extends Model
 {
-    /** @use HasFactory<\Database\Factories\DonationFactory> */
+    /** @use HasFactory<DonationFactory> */
     use HasFactory;
 
     public const UPDATED_AT = null;
@@ -65,5 +67,10 @@ class Donation extends Model
     public function need(): BelongsTo
     {
         return $this->belongsTo(Need::class)->withoutGlobalScopes();
+    }
+
+    public function certificate(): HasOne
+    {
+        return $this->hasOne(Certificate::class);
     }
 }

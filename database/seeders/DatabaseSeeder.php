@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
+use App\Actions\Donation\CreateCertificateAction;
 use App\Enums\Account\Role;
 use App\Enums\Shelter\ShelterStatus;
 use App\Models\Account\User;
@@ -56,6 +57,7 @@ class DatabaseSeeder extends Seeder
 
         $this->seedDonations($donors);
         $this->seedRecoveryUpdates();
+        $this->seedCertificates();
     }
 
     private function seedBadges(): void
@@ -290,6 +292,24 @@ class DatabaseSeeder extends Seeder
             }
 
             $t++;
+        }
+    }
+
+    /**
+     * Sertifikası olmayan tüm bağışlar için teşekkür belgesi üretir.
+     * (Bağışlar DonationCreated event'i ile zaten belge üretir; bu güvenlik ağıdır.)
+     */
+    private function seedCertificates(): void
+    {
+        $action = app(CreateCertificateAction::class);
+
+        $donations = Donation::whereNotNull('user_id')
+            ->whereDoesntHave('certificate')
+            ->with(['user', 'animal'])
+            ->get();
+
+        foreach ($donations as $donation) {
+            $action->execute($donation);
         }
     }
 }

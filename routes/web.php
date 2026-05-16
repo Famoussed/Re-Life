@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\Certificate\CertificateController;
 use App\Livewire\Account\UserList;
 use App\Livewire\Account\UserProfile;
 use App\Livewire\Animal\AnimalDetail;
@@ -50,6 +51,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/donate', DonationFlow::class)->name('donate');
     Route::get('/me/notifications', NotificationCenter::class)->name('notifications');
     Route::view('/profile', 'profile')->name('profile');
+
+    // Bağış sertifikaları
+    Route::get('/certificates/{certificate}', [CertificateController::class, 'show'])->name('certificates.show');
+    Route::get('/certificates/{certificate}/pdf', [CertificateController::class, 'download'])->name('certificates.pdf');
 
     // Çıkış (Breeze Livewire stack'inde hazır route yok — burada tanımlanır).
     Route::post('/logout', function (Request $request) {

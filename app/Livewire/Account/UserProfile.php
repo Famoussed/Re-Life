@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace App\Livewire\Account;
 
-use App\Models\Donation\Donation;
 use App\Models\Account\User;
+use App\Models\Donation\Certificate;
+use App\Models\Donation\Donation;
 use Illuminate\Contracts\View\View;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -42,6 +43,10 @@ class UserProfile extends Component
             'donationCount' => Donation::where('user_id', $this->user->id)->count(),
             'badge' => $this->user->badge(),
             'isOwner' => auth()->id() === $this->user->id,
+            'certificates' => Certificate::where('user_id', $this->user->id)
+                ->latest('issued_at')
+                ->take(30)
+                ->get(),
         ])->title($this->user->name.' — Re·Life');
     }
 }

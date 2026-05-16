@@ -88,4 +88,38 @@
             </div>
         </div>
     </div>
+
+    {{-- Teşekkür belgeleri --}}
+    <div class="mt-7">
+        <h2 class="font-modern text-[26px] text-ink-900 mb-3">Teşekkür Belgeleri</h2>
+        @if($certificates->isEmpty())
+            <div class="paper-card rounded-4xl shadow-card border border-cream-300/50 p-10 text-center font-modern text-[22px] text-clay-500">
+                henüz belge yok
+            </div>
+        @else
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                @foreach($certificates as $certificate)
+                    <a href="{{ route('certificates.show', $certificate) }}"
+                       class="paper-card rounded-3xl border border-cream-300/60 shadow-note p-5 block hover:-translate-y-0.5 transition-transform"
+                       wire:key="certificate-{{ $certificate->id }}">
+                        <div class="flex items-center gap-2.5">
+                            <svg class="w-7 h-7 text-sun-400"><use href="#paw" fill="currentColor"/></svg>
+                            <div class="text-[11px] uppercase tracking-[0.14em] text-clay-500">Teşekkür Belgesi</div>
+                        </div>
+                        <div class="font-modern text-[19px] text-ink-900 mt-2">
+                            {{ $certificate->animal_name ?? 'Barınağa destek' }}
+                        </div>
+                        <div class="flex items-baseline justify-between mt-3">
+                            <span class="font-modern text-[20px] text-clay-600">₺{{ number_format((float) $certificate->amount, 0, ',', '.') }}</span>
+                            <span class="text-[12px] text-ink-700/55">{{ $certificate->issued_at->format('d.m.Y') }}</span>
+                        </div>
+                        <div class="mt-3 pt-3 border-t border-cream-300/70 flex items-center justify-between">
+                            <span class="text-[11px] text-ink-700/45 tracking-wide">{{ $certificate->certificate_no }}</span>
+                            <span class="text-[12.5px] text-sage-700 font-medium">Görüntüle →</span>
+                        </div>
+                    </a>
+                @endforeach
+            </div>
+        @endif
+    </div>
 </div>
